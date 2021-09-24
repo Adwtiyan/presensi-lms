@@ -31,20 +31,20 @@
                 </a>
 
                 <!-- SIDEBAR -->
-                @include('layouts.sidebar')
+                @include('layouts.apps.sidebar')
 
             </div>
         </nav>
 
         <div class="main">
             <!-- NAVBAR -->
-            @include('layouts.navbar')
+            @include('layouts.apps.navbar')
 
             <!-- CONTENT -->
             @yield('contents')
 
             <!-- FOOTER -->
-            @include('layouts.footer')
+            @include('layouts.apps.footer')
         </div>
     </div>
 
