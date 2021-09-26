@@ -20,6 +20,9 @@
                             <div class="col-sm-9">
                                 <input class="form-control" type="text" name="room_code" placeholder="Input Room Code"
                                     id="example-text-input" value="{{$data->room_code}}">
+                                @foreach ($errors->get('room_code') as $msg)
+                                    <p class="text-danger">{{ $msg }}</p>
+                                @endforeach
                             </div>
                         </div>
                         <div class="pt-3">

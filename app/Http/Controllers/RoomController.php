@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use App\Http\Requests\RoomRequest;
 
 class RoomController extends Controller
 {
@@ -36,7 +37,7 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoomRequest $request)
     {
         $room = new Room;
         $room->room_code = $request->room_code;
@@ -79,7 +80,7 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room)
+    public function update(RoomRequest $request, Room $room)
     {
         $data = Room::findOrFail($room->id);
         $data->room_code = $request->room_code;

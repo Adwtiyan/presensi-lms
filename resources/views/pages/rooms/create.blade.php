@@ -19,9 +19,12 @@
                             <div class="col-sm-9">
                                 <input class="form-control" type="text" name="room_code" placeholder="Input Room Code"
                                     id="example-text-input">
+                                    @foreach ($errors->get('room_code') as $msg)
+                                        <p class="text-danger">{{ $msg }}</p>
+                                    @endforeach
                             </div>
                         </div>
-                        <div class="pt-3">
+                        <div class="pt-2">
                             <button type="submit" class="btn btn-primary waves-effect waves-light float-right"><i
                                     class="mdi mdi-file-document-box-plus mr-2"></i>Add</button>
                             <a class="btn btn-success" href="{{ route('rooms.index') }}">Back</a>
