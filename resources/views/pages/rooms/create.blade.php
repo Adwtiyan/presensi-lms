@@ -24,15 +24,13 @@
                         <div class="pt-3">
                             <button type="submit" class="btn btn-primary waves-effect waves-light float-right"><i
                                     class="mdi mdi-file-document-box-plus mr-2"></i>Add</button>
-                            <a class="btn btn-success" href="{{url('rooms')}}">Back</a>
+                            <a class="btn btn-success" href="{{ route('rooms.index') }}">Back</a>
                         </div>
                     </form>
                 </div>
             </div>
         </div> <!-- end col -->
     </div> <!-- end row -->
-
-
 </main>
 
 @endsection

@@ -28,4 +28,4 @@ Route::get('/dashboard', function () {
 
 require __DIR__ . '/auth.php';
 
-Route::resource('/rooms', RoomController::class);
+Route::resource('rooms', RoomController::class);

@@ -12,7 +12,7 @@
         <div class="col-6 mx-auto">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ url('rooms/'.$data->id) }}" method="post">
+                    <form action="{{ route('rooms.update', $data->id) }}" method="post">
                         @csrf
                         @method('PUT')
                         <div class="form-group row">
@@ -25,7 +25,7 @@
                         <div class="pt-3">
                             <button type="submit" class="btn btn-primary waves-effect waves-light float-right"><i
                                     class="mdi mdi-file-document-box-plus mr-2"></i>Edit</button>
-                            <a class="btn btn-success" href="{{url('rooms')}}">Back</a>
+                            <a class="btn btn-success" href="{{ route('rooms.index') }}">Back</a>
                         </div>
                     </form>
                 </div>

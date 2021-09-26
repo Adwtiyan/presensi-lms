@@ -86,7 +86,7 @@ class RoomController extends Controller
         $data->save();
 
         $request->session()->flash('status', 'Room has been updated !');
-        return redirect('rooms');
+        return redirect()->route('rooms.index');
     }
 
     /**
@@ -101,6 +101,6 @@ class RoomController extends Controller
         $data->delete();
 
         $request->session()->flash('statusDelete', 'Room has been deleted !');
-        return redirect('/rooms');
+        return redirect()->route('rooms.index');
     }
 }
