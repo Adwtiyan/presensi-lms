@@ -21,6 +21,10 @@ Route::get('/test', function () {
     return view('pages.test-content');
 });
 
+Route::get('/teacher', function () {
+    return view('pages.dashboard-teacher');
+})->middleware(['auth'])->name('dashboard-teacher');;
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
