@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\RoomController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,10 +25,13 @@ Route::get('/test', function () {
 
 Route::get('/teacher', function () {
     return view('pages.dashboard-teacher');
-})->middleware(['auth'])->name('dashboard-teacher');;
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::resource('courses', CourseController::class);
+Route::resource('rooms', RoomController::class);
 
 require __DIR__ . '/auth.php';
