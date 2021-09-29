@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,9 @@ Route::get('/test', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/show-profile', [UserController::class, 'edit'])->name('show-profile');
+Route::put('/update-profile/{id_user}', [UserController::class, 'update'])->name('update-profile');
 
 Route::resource('courses', CourseController::class);
 Route::resource('rooms', RoomController::class);
