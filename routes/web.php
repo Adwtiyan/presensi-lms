@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RoomController;
+use App\Http\Controllers\TopicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,5 +30,6 @@ Route::get('/dashboard', function () {
 
 Route::resource('courses', CourseController::class);
 Route::resource('rooms', RoomController::class);
+Route::resource('topics', TopicController::class);
 
 require __DIR__ . '/auth.php';
