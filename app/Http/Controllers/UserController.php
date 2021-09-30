@@ -21,14 +21,21 @@ class UserController extends Controller
     }
 
     public function update(Request $request, $id_user){
+        $old_email = User::findOrFail($id_user);
+        
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
             'avatar' => 'image',
             'date' => 'required',
             'phone' => 'required|numeric',
             'address' => 'required'
         ]);
+
+        if ($request->email !== $old_email->email) {
+            $request->validate([
+                'email' => 'required|unique:users,email',
+            ]);
+        }
 
         $bio = [
             'phone' => $request->phone,

@@ -29,6 +29,6 @@ class AddNewFieldUsersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('users');
     }
 }
