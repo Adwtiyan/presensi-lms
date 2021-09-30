@@ -42,7 +42,7 @@
                     <h5 class="card-title mb-0">Update Profile</h5>
                 </div>
                 <div class="card-body h-100">
-                   <form action="{{ route('update-profile', $user->id) }}" method="post" enctype="multipart/form-data">
+                   <form action="{{ route('profile.update', $user->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @method('put')
 
@@ -59,7 +59,12 @@
                         <div class="row mb-3">
                             <div class="col-4">
                                 <label class="mb-1">Date of Birth</label>
-                                <input type="date" class="form-control @error('email') is-invalid @enderror" name="date" value="{{ $bio->date_of_birth }}">
+                                <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" value="{{ $bio->date_of_birth }}">
+                                @error('date')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                             <div class="col-8">
                                 <label class="mb-1">Email</label>

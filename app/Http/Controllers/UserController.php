@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function edit(){
+    public function show(){
 
         $id = auth()->id();
-        $user = User::firstWhere('id', $id);
+        $user = User::findOrFail($id);
         $bio = json_decode($user->bio);
 
         return view('pages.users.edit')->with([
@@ -25,6 +25,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required',
             'avatar' => 'image',
+            'date' => 'required',
             'phone' => 'required|numeric',
             'address' => 'required'
         ]);
@@ -54,6 +55,6 @@ class UserController extends Controller
             'avatar' => $avatar
         ]);
 
-        return redirect('/show-profile');
+        return redirect('profile');
     }
 }

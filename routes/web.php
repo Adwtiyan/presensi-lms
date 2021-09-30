@@ -28,8 +28,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/show-profile', [UserController::class, 'edit'])->name('show-profile');
-Route::put('/update-profile/{id_user}', [UserController::class, 'update'])->name('update-profile');
+Route::get('/profile', [UserController::class, 'show'])->name('profile.show');
+Route::put('/profile/{id_user}', [UserController::class, 'update'])->name('profile.update');
 
 Route::resource('courses', CourseController::class);
 Route::resource('rooms', RoomController::class);
