@@ -15,8 +15,10 @@ class ClassroomsController extends Controller
      */
     public function index()
     {
+        $classrooms = Classrooms::all();
+
         return view('pages.classrooms.index')->with([
-            'classrooms'=>Classrooms::all()
+            'classrooms' => $classrooms
         ]);
     }
 
@@ -41,10 +43,12 @@ class ClassroomsController extends Controller
         $request->validate([
             'classrooms'=>'required'
         ]);
+
         Classrooms::create([
             'name' => $request->classrooms
         ]);
-        return redirect('/classrooms');
+
+        return redirect()->route('classrooms.index');
     }
 
     /**
@@ -66,8 +70,10 @@ class ClassroomsController extends Controller
      */
     public function edit($classrooms)
     {
+        $classrooms = Classrooms::firstWhere('id', $classrooms);
+
         return view('pages.classrooms.edit')->with([
-            'classroom' => Classrooms::firstWhere('id', $classrooms)
+            'classroom' => $classrooms
         ]);
     }
 
@@ -83,11 +89,13 @@ class ClassroomsController extends Controller
         $request->validate([
             'classrooms'=>'required'
         ]);
+
         Classrooms::where('id',$classrooms)
         ->update([
             'name'=>$request->classrooms
         ]);
-        return redirect('/classrooms');
+
+        return redirect()->route('classrooms.index');
     }
 
     /**
@@ -99,6 +107,7 @@ class ClassroomsController extends Controller
     public function destroy($classrooms)
     {
         Classrooms::destroy($classrooms);
-        return redirect('/classrooms');
+
+        return redirect()->route('classrooms.index');
     }
 }
