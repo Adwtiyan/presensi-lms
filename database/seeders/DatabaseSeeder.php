@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(10)->create();
         \App\Models\Course::factory(10)->create();
         $this->call([
-            RoomsTableSeeder::class
+            RoomsTableSeeder::class,
+            SchedulesSeeder::class
         ]);
     }
 }
