@@ -22,11 +22,22 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+
+        $bio = [
+            'address' => $this->faker->address(),
+            'date_of_birth' => '2001-03-17', 
+            'phone' => '69696969'
+        ];
+
+        $json = json_encode($bio);
+
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'bio' => $json,
+            'avatar' => 'avatar/user.png',
             'remember_token' => Str::random(10),
         ];
     }

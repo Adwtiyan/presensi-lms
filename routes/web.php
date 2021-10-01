@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\ClassroomsController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ScheduleController;
+
+use App\Http\Controllers\UserController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,10 +28,18 @@ Route::get('/test', function () {
     return view('pages.test-content');
 });
 
+Route::get('/teacher', function () {
+    return view('pages.dashboard-teacher');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/profile', [UserController::class, 'show'])->name('profile.show');
+Route::put('/profile/{id_user}', [UserController::class, 'update'])->name('profile.update');
+
+Route::resource('classrooms', ClassroomsController::class);
 Route::resource('courses', CourseController::class);
 Route::resource('rooms', RoomController::class);
 Route::resource('schedules', ScheduleController::class);
