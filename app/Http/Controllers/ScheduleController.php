@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Room;
+use App\Models\Course;
 use App\Models\Schedule;
+use App\Models\Classrooms;
 use App\Http\Requests\ScheduleRequest;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
@@ -28,7 +31,14 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        return view('pages.schedules.create');
+        $courses = Course::all();
+        $classrooms = Classrooms::all();
+        $rooms = Room::all();
+        return view('pages.schedules.create')->with([
+            'courses' => $courses,
+            'classrooms' => $classrooms,
+            'rooms' => $rooms
+        ]);
     }
 
     /**

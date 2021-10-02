@@ -28,8 +28,9 @@ class CourseController extends Controller
      */
     public function create()
     {
+        $users = User::all();
         return view('pages.courses.create')->with([
-            'users' => User::all()
+            'users' => $users
         ]);
     }
 

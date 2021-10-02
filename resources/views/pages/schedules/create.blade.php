@@ -16,6 +16,15 @@
                 <div class="card-body">
                     <form action="{{ route('schedules.store') }}" method="post">
                         @csrf
+                        <div class="mb-3">
+                            <label for="example-text-input" class="col-sm-3 col-form-label">Course Id</label>
+                            <select class="form-select" aria-label="Default select example" name="course_id">
+                                <option value="" selected>Select Courses</option>
+                                @foreach ($courses as $course)
+                                <option value="{{ $course->id }}">{{ $course->course_title }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group row">
                             <label for="example-text-input" class="col-sm-3 col-form-label">Course Id</label>
                             <div class="col-sm-9">

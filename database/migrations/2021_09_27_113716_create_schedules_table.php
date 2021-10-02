@@ -15,9 +15,9 @@ class CreateSchedulesTable extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('course_id');
-            $table->string('classroom_id');
-            $table->string('room_id');
+            $table->uuid('course_id');
+            $table->uuid('classroom_id');
+            $table->uuid('room_id');
             $table->enum('day', ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu'])->default('senin');
             $table->string('schedule_start');
             $table->string('schedule_finish');
