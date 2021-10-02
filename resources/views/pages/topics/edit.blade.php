@@ -19,7 +19,7 @@
                             <label class="form-label">Description</label>
                             <input required type="text" class="form-control mb-3" name="description" value="{{ $topic->description }}">
                             <label class="form-label mb-3">Deadline</label>
-                            <input required type="datetime-local" class="form-control mb-3" name="deadline" value="{{ $topic->deadline }}">
+                            <input required type="datetime" class="form-control mb-3" name="deadline" value="{{ $topic->deadline }}">
                             <label class="form-label mb-3">Nilai</label>
                             <input required type="number" class="form-control mb-3" name="nilai" value="{{ $topic->nilai }}">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-2">

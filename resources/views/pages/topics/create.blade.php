@@ -18,7 +18,7 @@
                             <label class="form-label">Description</label>
                             <input type="text" class="form-control mb-3" name="description" required>
                             <label class="form-label mb-3">Deadline</label>
-                            <input type="datetime-local" class="form-control mb-3" name="deadline" required>
+                            <input type="datetime" class="form-control mb-3" name="deadline" required>
                             <label class="form-label mb-3">Nilai</label>
                             <input type="number" class="form-control mb-3" name="nilai" required>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-2">

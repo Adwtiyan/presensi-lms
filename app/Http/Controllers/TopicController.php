@@ -27,10 +27,7 @@ class TopicController extends Controller
      */
     public function create()
     {
-        $topic = Topic::all();
-        return view('pages.topics.create', compact( //compact untuk melempar data var
-            'topic'
-        ));
+        return view('pages.topics.create');
     }
 
     /**
@@ -72,7 +69,7 @@ class TopicController extends Controller
      */
     public function edit(Topic $topic)
     {
-        $topic = Topic::find($id); //menemukan berdasarkn id
+        $topic = Topic::find($topic->id); //menemukan berdasarkn id
         return view('pages.topics.edit', compact(
             'topic'
         ));
@@ -87,7 +84,7 @@ class TopicController extends Controller
      */
     public function update(Request $request, Topic $topic)
     {
-        $topic = Topic::find($id);
+        $topic = Topic::find($topic->id);
         $topic->course_id = $request->course_id;
         $topic->rooms_id = $request->rooms_id;
         $topic->title = $request->title;
@@ -107,7 +104,7 @@ class TopicController extends Controller
      */
     public function destroy(Topic $topic)
     {
-        $topic = Topic::find($id);
+        $topic = Topic::find($topic->id);
         $topic->delete();
         return redirect('topics');
     }

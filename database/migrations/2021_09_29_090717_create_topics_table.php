@@ -19,7 +19,7 @@ class CreateTopicsTable extends Migration
             $table->string('rooms_id');
             $table->string('title');
             $table->string('description');
-            $table->date('deadline');
+            $table->dateTime('deadline');
             $table->integer('nilai');
 
             $table->timestamps();
