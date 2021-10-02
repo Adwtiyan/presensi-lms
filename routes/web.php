@@ -36,12 +36,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/profile', [UserController::class, 'show'])->name('profile.show');
-Route::put('/profile/{id_user}', [UserController::class, 'update'])->name('profile.update');
+Route::get('/profile', [UserController::class, 'show'])->name('profile.show')->middleware(['auth']);
+Route::put('/profile/{id_user}', [UserController::class, 'update'])->name('profile.update')->middleware(['auth']);
 
-Route::resource('classrooms', ClassroomsController::class);
-Route::resource('courses', CourseController::class);
-Route::resource('rooms', RoomController::class);
-Route::resource('schedules', ScheduleController::class);
+Route::resource('schedules', ScheduleController::class)->middleware(['auth']);
+Route::resource('classrooms', ClassroomsController::class)->middleware(['auth']);
+Route::resource('courses', CourseController::class)->middleware(['auth']);
+Route::resource('rooms', RoomController::class)->middleware(['auth']);
 
 require __DIR__ . '/auth.php';
