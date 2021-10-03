@@ -18,7 +18,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $schedules = Schedule::all();
+        $schedules = Schedule::with('courses','classrooms','rooms')->get();
         return view('pages.schedules.index')->with([
             'schedules' => $schedules
         ]);
@@ -80,7 +80,8 @@ class ScheduleController extends Controller
      */
     public function edit(Schedule $schedule)
     {
-        $schedule = Schedule::findOrFail($schedule->id);
+        $schedule = Schedule::with('courses', 'classrooms', 'rooms')->where('id', $schedule->id)->first();
+        // $schedule = Schedule::findOrFail($schedule->id);
         return view('pages.schedules.edit')->with([
             'schedule' => $schedule
         ]);
@@ -96,9 +97,6 @@ class ScheduleController extends Controller
     public function update(ScheduleRequest $request, Schedule $schedule)
     {
         $schedule = Schedule::findOrFail($schedule->id);
-        $schedule->course_id = $request->course_id;
-        $schedule->classroom_id = $request->classroom_id;
-        $schedule->room_id = $request->room_id;
         $schedule->day = $request->day;
         $schedule->schedule_start = $request->schedule_start;
         $schedule->schedule_finish = $request->schedule_finish;

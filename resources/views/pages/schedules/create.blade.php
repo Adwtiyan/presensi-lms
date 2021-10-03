@@ -25,38 +25,37 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group row">
-                            <label for="example-text-input" class="col-sm-3 col-form-label">Course Id</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="text" name="course_id" placeholder="Input Course id"
-                                    id="example-text-input">
-                                @foreach ($errors->get('course_id') as $msg)
-                                <p class="text-danger">{{ $msg }}</p>
-                                @endforeach
-                            </div>
-                            <br><br>
+                        <div class="mb-3">
                             <label for="example-text-input" class="col-sm-3 col-form-label">Classroom Id</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="text" name="classroom_id"
-                                    placeholder="Input Classroom Id" id="example-text-input">
-                                @foreach ($errors->get('classroom_id') as $msg)
-                                <p class="text-danger">{{ $msg }}</p>
+                            <select class="form-select" aria-label="Default select example" name="classroom_id">
+                                <option value="" selected>Select Classroom</option>
+                                @foreach ($classrooms as $classroom)
+                                <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
                                 @endforeach
-                            </div>
-                            <br><br>
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label for="example-text-input" class="col-sm-3 col-form-label">Room Id</label>
-                            <div class="col-sm-9">
-                                <input class="form-control" type="text" name="room_id" placeholder="Input Room Id"
-                                    id="example-text-input">
-                                @foreach ($errors->get('room_id') as $msg)
-                                <p class="text-danger">{{ $msg }}</p>
+                            <select class="form-select" aria-label="Default select example" name="room_id">
+                                <option value="" selected>Select Room</option>
+                                @foreach ($rooms as $room)
+                                <option value="{{ $room->id }}">{{ $room->room_code }}</option>
                                 @endforeach
-                            </div>
+                            </select>
+                        </div>
+                        <div class="form-group row">
                             <br><br>
                             <label for="example-text-input" class="col-sm-3 col-form-label">Day</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="text" name="day" placeholder="Input day"
-                                    id="example-text-input">
+                                <select name="day" class="custom-select">
+                                    <option selected>Select Day</option>
+                                    <option value="senin">senin</option>
+                                    <option value="selasa">selasa</option>
+                                    <option value="rabu">rabu</option>
+                                    <option value="kamis">kamis</option>
+                                    <option value="jumat">jumat</option>
+                                    <option value="sabtu">sabtu</option>
+                                </select>
                                 @foreach ($errors->get('day') as $msg)
                                 <p class="text-danger">{{ $msg }}</p>
                                 @endforeach
@@ -64,7 +63,7 @@
                             <br><br>
                             <label for="example-text-input" class="col-sm-3 col-form-label">Schedule Start</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="text" name="schedule_start"
+                                <input class="form-control" type="time" name="schedule_start"
                                     placeholder="Schedule Start" id="example-text-input">
                                 @foreach ($errors->get('schedule_start') as $msg)
                                 <p class="text-danger">{{ $msg }}</p>
@@ -73,7 +72,7 @@
                             <br><br>
                             <label for="example-text-input" class="col-sm-3 col-form-label">Schedule Finish</label>
                             <div class="col-sm-9">
-                                <input class="form-control" type="text" name="schedule_finish"
+                                <input class="form-control" type="time" name="schedule_finish"
                                     placeholder="Schedule Finish" id="example-text-input">
                                 @foreach ($errors->get('schedule_finish') as $msg)
                                 <p class="text-danger">{{ $msg }}</p>

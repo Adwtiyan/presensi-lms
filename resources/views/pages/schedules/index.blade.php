@@ -36,9 +36,9 @@
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $schedule->id }}</td>
-                                <td>{{ $schedule->course_id }}</td>
-                                <td>{{ $schedule->classroom_id }}</td>
-                                <td>{{ $schedule->room_id }}</td>
+                                <td>{{ $schedule->courses->course_title }}</td>
+                                <td>{{ $schedule->classrooms->name }}</td>
+                                <td>{{ $schedule->rooms->room_code }}</td>
                                 <td>{{ $schedule->day }}</td>
                                 <td>{{ $schedule->schedule_start }}</td>
                                 <td>{{ $schedule->schedule_finish }}</td>
