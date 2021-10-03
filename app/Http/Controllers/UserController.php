@@ -14,6 +14,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $bio = json_decode($user->bio);
 
+        // return response()->json($bio);
         return view('pages.users.edit')->with([
             'user' => $user,
             'bio' => $bio
@@ -22,7 +23,7 @@ class UserController extends Controller
 
     public function update(Request $request, $id_user){
         $old_email = User::findOrFail($id_user);
-        
+
         $request->validate([
             'name' => 'required',
             'avatar' => 'image',
@@ -62,6 +63,6 @@ class UserController extends Controller
             'avatar' => $avatar
         ]);
 
-        return redirect('profile');
+        return redirect()->route('profile.show');
     }
 }

@@ -16,9 +16,13 @@ class AddNewFieldUsersTable extends Migration
         Schema::table('users', function($table)
         {
             $table->enum('role', ['admin', 'teacher', 'student'])->default('student');
-            $table->jsonb('bio')->nullable();
+            $table->jsonb('bio')->nullable()->default(json_encode([
+                'phone' => null,
+                'address' => null,
+                'date_of_birth' => null
+            ]));
             $table->string('avatar')->nullable();
-            $table->jsonb('extra')->nullable();
+            $table->jsonb('extra')->nullable('[]');
         });
     }
 
