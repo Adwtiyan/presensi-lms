@@ -19,8 +19,8 @@ class CreateSchedulesTable extends Migration
             $table->uuid('classroom_id');
             $table->uuid('room_id');
             $table->enum('day', ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu'])->default('senin');
-            $table->string('schedule_start');
-            $table->string('schedule_finish');
+            $table->time('schedule_start');
+            $table->time('schedule_finish');
             $table->timestamps();
         });
     }
