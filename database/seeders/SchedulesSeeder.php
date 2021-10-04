@@ -2,8 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Classrooms;
+use App\Models\Course;
+use App\Models\Room;
 use Illuminate\Database\Seeder;
 use App\Models\Schedule;
+use App\Models\User;
 
 class SchedulesSeeder extends Seeder
 {
@@ -14,13 +18,29 @@ class SchedulesSeeder extends Seeder
      */
     public function run()
     {
-        // $schedule = new Schedule;
-        // $schedule->course_id = '4ddd5edb-a344-4ec9-94b4-9227b486c604';
-        // $schedule->classroom_id = 'fc9a0ed9-c8df-4900-a7d6-1488fb78004e';
-        // $schedule->room_id = '755f8dcf-9366-4e2c-be5c-ebf0ac220af5';
-        // $schedule->day = 'senin';
-        // $schedule->schedule_start = '08:40:00';
-        // $schedule->schedule_finish = '11:00:00';
-        // $schedule->save();
+        $user = User::factory(1)->create();
+        // dd($user[0]->id);
+
+        $course = new Course;
+        $course->user_id = $user[0]->id;
+        $course->course_title = 'Seeder Course Schedule';
+        $course->save();
+
+        $classroom = new Classrooms;
+        $classroom->name = 'Seeder Classsroom Schedule';
+        $classroom->save();
+
+        $room = new Room;
+        $room->room_code = 'Zoom Meeting Seeder Schedule';
+        $room->save();
+
+        $schedule = new Schedule;
+        $schedule->course_id = $course->id;
+        $schedule->classroom_id = $classroom->id;
+        $schedule->room_id = $room->id;
+        $schedule->day = 'senin';
+        $schedule->schedule_start = '08:40:00';
+        $schedule->schedule_finish = '11:00:00';
+        $schedule->save();
     }
 }
