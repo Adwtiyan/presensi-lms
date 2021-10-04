@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassroomsController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ScheduleController;
 
@@ -24,22 +25,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return view('pages.test-content');
-});
-
 Route::get('/teacher', function () {
     return view('pages.dashboard-teacher');
 });
 
-Route::get('/dashboard', function () {
-    // return view('dashboard');
-    return view('pages.test-content');
-})->middleware(['auth'])->name('dashboard');
+# Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-Route::get('/profile', [UserController::class, 'show'])->name('profile.show')->middleware(['auth']);
-Route::put('/profile/{id_user}', [UserController::class, 'update'])->name('profile.update')->middleware(['auth']);
+# User Setting
+Route::get('/profile', [UserController::class, 'show'])->middleware(['auth'])->name('profile.show');
+Route::put('/profile/{id_user}', [UserController::class, 'update'])->middleware(['auth'])->name('profile.update');
 
+# Resource Router
 Route::resource('schedules', ScheduleController::class)->middleware(['auth']);
 Route::resource('classrooms', ClassroomsController::class)->middleware(['auth']);
 Route::resource('courses', CourseController::class)->middleware(['auth']);
