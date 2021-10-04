@@ -33,7 +33,8 @@ Route::get('/teacher', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    // return view('dashboard');
+    return view('pages.test-content');
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/profile', [UserController::class, 'show'])->name('profile.show')->middleware(['auth']);
