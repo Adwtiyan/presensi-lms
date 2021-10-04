@@ -25,10 +25,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/teacher', function () {
-    return view('pages.dashboard-teacher');
-});
-
 # Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
@@ -41,5 +37,25 @@ Route::resource('schedules', ScheduleController::class)->middleware(['auth']);
 Route::resource('classrooms', ClassroomsController::class)->middleware(['auth']);
 Route::resource('courses', CourseController::class)->middleware(['auth']);
 Route::resource('rooms', RoomController::class)->middleware(['auth']);
+
+# Resource Teacher
+Route::prefix('teachers')
+    ->namespace('teachers')
+    ->middleware(['auth'])
+    ->group(function() {
+        Route::get('/dashboard', function () {
+            return view('pages.dashboard-teacher');
+        })->name('teachers.dashboard');
+    });
+
+# Resource Student
+// Route::prefix('students')
+//     ->namespace('students')
+//     ->middleware(['auth'])
+//     ->group(function() {
+//         Route::get('/dashboard', function () {
+//             return view('pages.dashboard-students');
+//         })->name('students.dashboard');
+//     });
 
 require __DIR__ . '/auth.php';

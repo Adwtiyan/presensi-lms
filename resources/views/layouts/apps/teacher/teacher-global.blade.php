@@ -38,7 +38,7 @@
 
         <div class="main">
             <!-- NAVBAR -->
-            @include('layouts.apps.teacher.teacher-navbar')
+            @include('layouts.apps.navbar')
 
             <!-- CONTENT -->
             @yield('contents')
