@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClassroomsTable extends Migration
+class CreateBatchesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreateClassroomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('classrooms', function (Blueprint $table) {
+        Schema::create('batches', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('batch_id');
             $table->string('name');
             $table->timestamps();
         });
@@ -28,6 +27,6 @@ class CreateClassroomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classrooms');
+        Schema::dropIfExists('batches');
     }
 }
