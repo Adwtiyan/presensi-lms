@@ -19,7 +19,7 @@ class TopicTableSeeder extends Seeder
         $topic->title = 'Programming';
         $topic->description = 'Lorem ipsum dolor sit amet';
         $topic->deadline = '2021-10-10';
-        $topic->nilai = '89';
+        $topic->value = '89';
         $topic->save();
     }
 }

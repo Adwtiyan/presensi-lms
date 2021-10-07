@@ -44,7 +44,7 @@ class TopicController extends Controller
         $topic->title = $request->title;
         $topic->description = $request->description;
         $topic->deadline = $request->deadline;
-        $topic->nilai = $request->nilai;
+        $topic->value = $request->value;
         $topic->save();
 
         return redirect('topics');
@@ -90,7 +90,7 @@ class TopicController extends Controller
         $topic->title = $request->title;
         $topic->description = $request->description;
         $topic->deadline = $request->deadline;
-        $topic->nilai = $request->nilai;
+        $topic->value = $request->value;
         $topic->save();
 
         return redirect('topics');

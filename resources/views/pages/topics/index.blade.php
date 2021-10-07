@@ -21,7 +21,7 @@
                         <th>Title</th>
                         <th class="d-none d-xl-table-cell">Desc</th>
                         <th>Deadline</th>
-                        <th>Nilai</th>
+                        <th>Value</th>
                         <th class="d-none d-xl-table-cell">Action</th>
                     </tr>
                 </thead>
@@ -34,7 +34,7 @@
                             <td>{{ $value->title }}</td>
                             <td>{{ $value->description }}</td>
                             <td>{{ $value->deadline }}</td>
-                            <td>{{ $value->nilai }}</td>
+                            <td>{{ $value->value }}</td>
                             <td>
                                 <a href="{{ url('topics/' . $value->id . '/edit') }}"
                                     class="btn btn-warning waves-effect waves-light">Update</a>

@@ -15,12 +15,12 @@ class CreateTopicsTable extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('course_id');
+            $table->uuid('course_id');
             $table->string('rooms_id');
             $table->string('title');
             $table->string('description');
             $table->dateTime('deadline');
-            $table->integer('nilai');
+            $table->integer('value');
 
             $table->timestamps();
         });

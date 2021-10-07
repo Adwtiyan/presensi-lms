@@ -20,8 +20,8 @@
                             <input required type="text" class="form-control mb-3" name="description" value="{{ $topic->description }}">
                             <label class="form-label mb-3">Deadline</label>
                             <input required type="datetime" class="form-control mb-3" name="deadline" value="{{ $topic->deadline }}">
-                            <label class="form-label mb-3">Nilai</label>
-                            <input required type="number" class="form-control mb-3" name="nilai" value="{{ $topic->nilai }}">
+                            <label class="form-label mb-3">Value</label>
+                            <input required type="number" class="form-control mb-3" name="nilai" value="{{ $topic->value }}">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-2">
                                 <button class="btn btn-primary col-12" type="submit">SIMPAN</button>
                             </div>
