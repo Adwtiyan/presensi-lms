@@ -5,6 +5,8 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\MemoController;
+
 
 use App\Http\Controllers\UserController;
 
@@ -37,6 +39,7 @@ Route::resource('schedules', ScheduleController::class)->middleware(['auth']);
 Route::resource('classrooms', ClassroomsController::class)->middleware(['auth']);
 Route::resource('courses', CourseController::class)->middleware(['auth']);
 Route::resource('rooms', RoomController::class)->middleware(['auth']);
+Route::resource('guru', MemoController::class);
 
 # Resource Teacher
 Route::prefix('teachers')
