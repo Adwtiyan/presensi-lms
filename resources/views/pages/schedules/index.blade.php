@@ -1,38 +1,34 @@
 @extends('layouts.apps.global')
 @section('contents')
-<main class="content">
-    <!-- start page title -->
-    <div class="row align-items-center">
-        <div class="col-sm-6">
-            <div class="page-title-box">
-                <h4 class="font-size-18">Data Schedules</h4>
+    <main class="content">
+        <!-- start page title -->
+        <div class="row align-items-center">
+            <div class="col-sm-6">
+                <div class="page-title-box">
+                    <h4 class="font-size-18">Data Schedules</h4>
+                    <a class="btn btn-primary" href="{{ route('schedules.create') }}">Add New Schedule</a>
+                </div>
             </div>
         </div>
-        <div class="col-sm-6">
-            <a class="btn btn-primary" href="{{ route('schedules.create') }}">Add New Schedule</a>
-        </div>
-    </div>
-    <!-- end page title -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <table class="table table-hover my-0">
-                        <thead>
-                            <tr>
-                                <th>NO</th>
-                                <th>Schedule ID</th>
-                                <th>Course Title</th>
-                                <th>Classroom</th>
-                                <th>Room Code</th>
-                                <th>Day</th>
-                                <th>Start</th>
-                                <th>Finish</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($schedules as $key => $schedule)
+        <!-- end page title -->
+        <div class="row mt-3">
+            <div class="col-12">
+                <table class="table table-hover my-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>NO</th>
+                            <th>Schedule ID</th>
+                            <th>Course Title</th>
+                            <th>Classroom</th>
+                            <th>Room Code</th>
+                            <th>Day</th>
+                            <th>Start</th>
+                            <th>Finish</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($schedules as $key => $schedule)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $schedule->id }}</td>
@@ -51,18 +47,15 @@
                                         action="{{ route('schedules.destroy', $schedule->id) }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <input type="submit" value="Delete"
-                                            class="btn btn-danger waves-effect waves-light">
+                                        <input type="submit" value="Delete" class="btn btn-danger waves-effect waves-light">
                                     </form>
                                 </td>
                             </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div> <!-- end col -->
-    </div> <!-- end row -->
-</main>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+    </main>
 
 @endsection
