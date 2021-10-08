@@ -1,4 +1,4 @@
-@extends('layouts.apps.global')
+@extends('layouts.apps.teacher.teacher-global')
 @section('contents')
 <main class="content">
     <div class="container-fluid p-0">
@@ -13,20 +13,24 @@
             <div class="col-6 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('memos.update', $memo->id)}}" method="post">
+                        <form action="{{ route('memos.store') }}" method="post">
                             @csrf
-                            @method('PUT')
                             <div class="form-group row mb-4">
                                 <label for="example-text-input" class="col-sm-3 col-form-label">User Id</label>
-                                <div class="col-sm-9">
-                                    <input class="form-control" type="text" name="user_id" id="example-text-input"
-                                        value="{{ $memo->user->name }}" readonly>
-                                </div>
+                                <select class="form-select" aria-label="Default select example" name="user_id">
+                                    <option value="" selected>Select User</option>
+                                    @foreach ($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                    @endforeach
+                                    @foreach ($errors->get('user_id') as $error)
+                                    <p class="text-danger">{{ $error }}</p>
+                                    @endforeach
+                                </select>
                             </div>
                             <div class="form-group row mb-3">
                                 <label for="example-text-input" class="col-sm-3 col-form-label">Memo</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="memo" value="{{ $memo->memo }}">
+                                    <input type="text" name="memo" placeholder="Input Our Memo">
                                 </div>
                                 @foreach ($errors->get('memo') as $error)
                                 <p class="text-danger">{{ $error }}</p>
@@ -35,7 +39,7 @@
                             <div class="form-group row mb-3">
                                 <label for="example-text-input" class="col-sm-3 col-form-label">Date</label>
                                 <div class="col-sm-9">
-                                    <input type="date" name="date" value="{{ $memo->date }}">
+                                    <input type="date" name="date">
                                 </div>
                                 @foreach ($errors->get('date') as $error)
                                 <p class="text-danger">{{ $error }}</p>

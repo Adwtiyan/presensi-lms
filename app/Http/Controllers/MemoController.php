@@ -29,7 +29,7 @@ class MemoController extends Controller
      */
     public function create()
     {   $users = User::all();
-        return view('pages.dashboardTeacher.create')->with([
+        return view('pages.memos.create')->with([
             'users' => $users
         ]);
     }
@@ -72,7 +72,7 @@ class MemoController extends Controller
     {
         $memo = Memo::with('user')->where('id', $id)->first();
 
-        return view('pages.dashboardTeacher.edit')->with([
+        return view('pages.memos.edit')->with([
             'memo' => $memo
         ]);
     }
