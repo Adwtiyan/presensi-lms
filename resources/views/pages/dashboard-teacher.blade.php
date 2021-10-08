@@ -31,8 +31,8 @@
             <div class="col-8">
                 <div class="card flex-fill">
                     <div class="card-header">
-
-                        <h5 class="card-title mb-0">Memo</h5>
+                        <h5 class="card-title mb-2">Memo</h5>
+                        <a class="btn btn-primary my-2" href="{{ route('memos.create') }}">Add Memo</a>
                     </div>
                     <table class="table table-hover my-0">
                         <thead>
@@ -68,7 +68,6 @@
                         </tbody>
                     </table>
                 </div>
-                <a class="btn btn-primary" href="{{ route('memos.create') }}">Add Memo</a>
             </div>
         </div>
 
