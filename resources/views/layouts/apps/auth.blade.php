@@ -12,8 +12,6 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="{{ asset('assets/admin-kit/img/icons/icon-48x48.png') }}" />
 
-	<title>Sign Up | Amikom Center</title>
-
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <!-- CSS -->
@@ -27,13 +25,6 @@
 			<div class="row vh-100">
 				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
 					<div class="d-table-cell align-middle">
-
-						<div class="text-center mt-4">
-							<h1 class="h2">Get started</h1>
-							<p class="lead">
-								Start access and manage your learning platform.
-							</p>
-						</div>
 
 						<div class="card">
 							<div class="card-body">
