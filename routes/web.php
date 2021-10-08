@@ -39,16 +39,15 @@ Route::resource('schedules', ScheduleController::class)->middleware(['auth']);
 Route::resource('classrooms', ClassroomsController::class)->middleware(['auth']);
 Route::resource('courses', CourseController::class)->middleware(['auth']);
 Route::resource('rooms', RoomController::class)->middleware(['auth']);
-Route::resource('guru', MemoController::class);
 
 # Resource Teacher
 Route::prefix('teachers')
-    ->namespace('teachers')
     ->middleware(['auth'])
     ->group(function() {
         Route::get('/dashboard', function () {
             return view('pages.dashboard-teacher');
         })->name('teachers.dashboard');
+        Route::resource('memos', MemoController::class);
     });
 
 # Resource Student

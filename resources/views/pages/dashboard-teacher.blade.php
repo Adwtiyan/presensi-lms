@@ -48,15 +48,15 @@
                             @foreach ($memos as $key => $memo)
                             <tr>
                                 <td scope="row">{{ $key +1 }}</td>
-                                <td>{{ $memo->users->name }}</td>
+                                <td>{{ $memo->user->name }}</td>
                                 <td>{{ $memo->memo }}</td>
                                 <td>{{ $memo->date }}</td>
                                 <td>
-                                    <a href="{{ route('guru.edit', $memo->id) }}"
+                                    <a href="{{ route('memos.edit', $memo->id) }}"
                                         class="btn btn-warning waves-effect waves-light">Update</a>
                                     <form class="d-inline"
                                         onsubmit="return confirm('Data will be Deleted, Are you sure?')"
-                                        action="{{ route('guru.destroy', $memo->id) }}" method="POST">
+                                        action="{{ route('memos.destroy', $memo->id) }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="submit" value="Delete"
@@ -68,7 +68,7 @@
                         </tbody>
                     </table>
                 </div>
-                <a class="btn btn-primary" href="{{ route('guru.create') }}">Add Memo</a>
+                <a class="btn btn-primary" href="{{ route('memos.create') }}">Add Memo</a>
             </div>
         </div>
 

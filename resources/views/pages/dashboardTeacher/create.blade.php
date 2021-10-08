@@ -13,7 +13,7 @@
             <div class="col-6 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('guru.store') }}" method="post">
+                        <form action="{{ route('memos.store') }}" method="post">
                             @csrf
                             <div class="form-group row mb-4">
                                 <label for="example-text-input" class="col-sm-3 col-form-label">User Id</label>
@@ -47,7 +47,7 @@
                             </div>
                             <div>
                                 <button class="btn btn-primary" type="submit">Add</button>
-                                <a class="btn btn-success" href="{{ route('guru.index') }}">Back</a>
+                                <a class="btn btn-success" href="{{ route('memos.index') }}">Back</a>
                             </div>
                         </form>
                     </div>

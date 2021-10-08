@@ -13,14 +13,14 @@
             <div class="col-6 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('guru.update', $memo->id)}}" method="post">
+                        <form action="{{ route('memos.update', $memo->id)}}" method="post">
                             @csrf
                             @method('PUT')
                             <div class="form-group row mb-4">
                                 <label for="example-text-input" class="col-sm-3 col-form-label">User Id</label>
                                 <div class="col-sm-9">
                                     <input class="form-control" type="text" name="user_id" id="example-text-input"
-                                        value="{{ $memo->users->name }}" readonly>
+                                        value="{{ $memo->user->name }}" readonly>
                                 </div>
                             </div>
                             <div class="form-group row mb-3">
@@ -43,7 +43,7 @@
                             </div>
                             <div>
                                 <button class="btn btn-primary" type="submit">Add</button>
-                                <a class="btn btn-success" href="{{ route('guru.index') }}">Back</a>
+                                <a class="btn btn-success" href="{{ route('memos.index') }}">Back</a>
                             </div>
                         </form>
                     </div>

@@ -16,7 +16,7 @@ class MemoController extends Controller
      */
     public function index()
     {
-        $memos = Memo::with('users')->get();
+        $memos = Memo::with('user')->get();
         return view('pages.dashboard-teacher')->with([
             'memos' => $memos
         ]);
@@ -48,7 +48,7 @@ class MemoController extends Controller
         $memo->date = $request->date;
         $memo->save();
 
-        return redirect()->route('guru.index');
+        return redirect()->route('memos.index');
     }
 
     /**
@@ -70,7 +70,7 @@ class MemoController extends Controller
      */
     public function edit($id)
     {
-        $memo = Memo::with('users')->where('id', $id)->first();
+        $memo = Memo::with('user')->where('id', $id)->first();
 
         return view('pages.dashboardTeacher.edit')->with([
             'memo' => $memo
@@ -91,7 +91,7 @@ class MemoController extends Controller
         $memo->date = $request->date;
         $memo->save();
 
-        return redirect()->route('guru.index');
+        return redirect()->route('memos.index');
     }
 
     /**
@@ -105,6 +105,6 @@ class MemoController extends Controller
         $memo = Memo::findOrFail($id);
         $memo->delete();
 
-        return redirect()->route('guru.index');
+        return redirect()->route('memos.index');
     }
 }
