@@ -1,8 +1,14 @@
+<head>
+    <link rel="shortcut icon" href="{{ asset('assets/admin-kit/img/icons/icon-48x48.png') }}" />
+    <title>Forgot Password | Amikom Center</title>
+</head>
+
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            <a href="{{ asset('assets/admin-kit/img/logo.jfif') }}">
+                <img src="{{ asset('assets/admin-kit/img/logo.jfif') }}" alt="Amikom Center"
+                class="img-fluid rounded-circle" width="132" height="132" />
             </a>
         </x-slot>
 
