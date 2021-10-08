@@ -1,68 +1,60 @@
-<head>
-    @include('includes.css')
-    <link rel="shortcut icon" href="{{ asset('assets/admin-kit/img/logo.jfif') }}" type="image/x-icon">
+@extends('layouts.apps.auth')
+@section('forms')
 
-    <title>Register | Amikom Center</title>
-</head>
+<title>Sign Up | Amikom Center</title>
 
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
 
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="{{ asset('assets/admin-kit/img/logo.jfif') }}">
-                <img src="{{ asset('assets/admin-kit/img/logo.jfif') }}" alt="Amikom Center"
-                class="img-fluid rounded-circle" width="132" height="132" />
-            </a>
-        </x-slot>
+        <!-- Header -->
+        <div class="text-center mt-4">
+            <p class="lead">
+                Sign Up to your account to continue
+            </p>
+        </div>
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <!-- Name -->
+        <div class="mb-3">
+            <x-label class="form-label" for="name" :value="__('Name')" />
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+            <x-input id="name" placeholder="Enter your name" class="form-control form-control-lg" type="text" name="name" :value="old('name')" required autofocus />
+        </div>
 
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
+        <!-- Email Address -->
+        <div class="mb-3">
+            <x-label class="form-label" for="email" :value="__('Email')" />
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
+            <x-input id="email" placeholder="Enter your email" class="form-control form-control-lg" type="email" name="email" :value="old('email')" required />
+        </div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+        <!-- Password -->
+        <div class="mb-3">
+            <x-label class="form-label" for="password" :value="__('Password')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-            </div>
+            <x-input id="password" placeholder="Enter your password" class="form-control form-control-lg"
+                            type="password"
+                            name="password"
+                            required autocomplete="new-password" />
+        </div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+        <!-- Confirm Password -->
+        <div class="mb-3">
+            <x-label class="form-label" for="password_confirmation" :value="__('Confirm Password')" />
 
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
+            <x-input id="password_confirmation" placeholder="Confirm your password" class="form-control form-control-lg"
+                            type="password"
+                            name="password_confirmation" required />
+        </div>
+        <div class="text-center mt-3">
+            <button class="btn btn-lg btn-primary">
+                {{ __('Sign up') }}
+            </button>
+        </div>
+    </form>
 
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+    <div class="text-center mt-4">
+        <center><p>Already have an account? <a href="{{ route('login') }}">Login</a></p></center>
+    </div>
 
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
+@endsection
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
