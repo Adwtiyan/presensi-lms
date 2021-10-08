@@ -24,7 +24,6 @@ class MemoRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required',
             'memo' => 'required',
             'date' => 'required'
         ];

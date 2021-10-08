@@ -15,18 +15,6 @@
                     <div class="card-body">
                         <form action="{{ route('memos.store') }}" method="post">
                             @csrf
-                            <div class="form-group row mb-4">
-                                <label for="example-text-input" class="col-sm-3 col-form-label">User Id</label>
-                                <select class="form-select" aria-label="Default select example" name="user_id">
-                                    <option value="" selected>Select User</option>
-                                    @foreach ($users as $user)
-                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                    @endforeach
-                                    @foreach ($errors->get('user_id') as $error)
-                                    <p class="text-danger">{{ $error }}</p>
-                                    @endforeach
-                                </select>
-                            </div>
                             <div class="form-group row mb-3">
                                 <label for="example-text-input" class="col-sm-3 col-form-label">Memo</label>
                                 <div class="col-sm-9">

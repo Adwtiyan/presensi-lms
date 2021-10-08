@@ -28,10 +28,8 @@ class MemoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   $users = User::all();
-        return view('pages.memos.create')->with([
-            'users' => $users
-        ]);
+    {
+        return view('pages.memos.create');
     }
 
     /**
@@ -42,8 +40,10 @@ class MemoController extends Controller
      */
     public function store(MemoRequest $request)
     {
+        $user_id = auth()->id();
+
         $memo = new Memo;
-        $memo->user_id = $request->user_id;
+        $memo->user_id = $user_id;
         $memo->memo = $request->memo;
         $memo->date = $request->date;
         $memo->save();
@@ -86,7 +86,10 @@ class MemoController extends Controller
      */
     public function update(MemoRequest $request, $id)
     {
+        $user_id = auth()->id();
+
         $memo = Memo::findOrFail($id);
+        $memo->user_id = $user_id;
         $memo->memo = $request->memo;
         $memo->date = $request->date;
         $memo->save();
