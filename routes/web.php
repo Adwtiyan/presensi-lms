@@ -2,11 +2,11 @@
 
 use App\Http\Controllers\ClassroomsController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\Teacher\DashboardController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ScheduleController;
-
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\teacher\DashboardController as TeacherDashboardController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -46,9 +46,9 @@ Route::prefix('teachers')
         Route::get('/dashboard', function () {
             return view('pages.dashboard-teacher');
         })->name('teachers.dashboard');
-        Route::get('/schedule', [DashboardController::class, 'showScheduleByUserId'])->middleware(['auth'])->name('dashboard.teachers.schedule');
-        Route::get('/info', [DashboardController::class, 'createInfo'])->middleware('auth')->name('dashboard.teachers.info');
-        Route::post('/start-absent', [DashboardController::class, 'storeAbsent'])->middleware('auth')->name('dashboard.teachers.start-absent');
+        Route::get('/schedule', [TeacherDashboardController::class, 'showScheduleByUserId'])->middleware(['auth'])->name('dashboard.teachers.schedule');
+        Route::get('/info', [TeacherDashboardController::class, 'createInfo'])->middleware('auth')->name('dashboard.teachers.info');
+        Route::post('/start-absent', [TeacherDashboardController::class, 'storeAbsent'])->middleware('auth')->name('dashboard.teachers.start-absent');
     });
 
 # Resource Student
