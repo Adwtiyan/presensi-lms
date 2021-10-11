@@ -1,7 +1,8 @@
-<head>
-    <link rel="shortcut icon" href="{{ asset('assets/admin-kit/img/icons/icon-48x48.png') }}" />
+@extends('layouts.apps.auth')
+<!-- Section Title -->
+@section('title')
     <title>Forgot Password | Amikom Center</title>
-</head>
+@endsection
 
 <x-guest-layout>
     <x-auth-card>
