@@ -38,13 +38,13 @@
 
         <div class="main">
             <!-- NAVBAR -->
-            @include('layouts.apps.navbar')
+            @include('layouts.apps.student.student-navbar')
 
             <!-- CONTENT -->
             @yield('contents')
 
             <!-- FOOTER -->
-            @include('layouts.apps.footer')
+            @include('layouts.apps.student.student-footer')
         </div>
     </div>
 
