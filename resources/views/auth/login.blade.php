@@ -1,19 +1,22 @@
 @extends('layouts.apps.auth')
-@section('forms')
-
-<head>
+<!-- Section Title -->
+@section('title')
     <title>Sign In | Amikom Center</title>
-</head>
+@endsection
+
+<!-- Section Form Title -->
+@section('form-title')
+    <h1 class="h2">Sign In</h1>
+    <p class="lead">
+        to your account to continue
+    </p>
+@endsection
+
+<!-- Section Form Primary -->
+@section('forms')
 
     <form method="POST" action="{{ route('dashboard') }}">
         @csrf
-
-        <!-- Header -->
-        <div class="text-center mt-4">
-            <p class="lead">
-                Sign in to your account to continue
-            </p>
-        </div>
 
         <!-- Email Address -->
         <div class="mb-3">
