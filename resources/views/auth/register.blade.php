@@ -6,9 +6,9 @@
 
 <!-- Section Form Title -->
 @section('form-title')
-    <h1 class="h2">Get started</h1>
+    <h1 class="h2">Sign Up</h1>
     <p class="lead">
-        Start access and manage your learning platform.
+        to your account to continue
     </p>
 @endsection
 
@@ -55,4 +55,9 @@
             </button>
         </div>
     </form>
+
+    <div class="text-center mt-4">
+    <center><p>Already have an account? <a href="{{ route('register') }}">Login</a></p></center>
+</div>
+
 @endsection
