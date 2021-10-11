@@ -5,6 +5,12 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ScheduleController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\MemoController;
+
+
+>>>>>>> 246028299ab0b863585b21089e78601ac25e79a2
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\teacher\DashboardController as TeacherDashboardController;
 
@@ -40,15 +46,19 @@ Route::resource('rooms', RoomController::class)->middleware(['auth']);
 
 # Resource Teacher
 Route::prefix('teachers')
-    ->namespace('teachers')
     ->middleware(['auth'])
     ->group(function() {
+<<<<<<< HEAD
         Route::get('/dashboard', function () {
             return view('pages.dashboard-teacher');
         })->name('teachers.dashboard');
         Route::get('/schedule', [TeacherDashboardController::class, 'showScheduleByUserId'])->middleware(['auth'])->name('dashboard.teachers.schedule');
         Route::get('/info', [TeacherDashboardController::class, 'createInfo'])->middleware('auth')->name('dashboard.teachers.info');
         Route::post('/start-absent', [TeacherDashboardController::class, 'storeAbsent'])->middleware('auth')->name('dashboard.teachers.start-absent');
+=======
+        Route::get('/dashboard', [MemoController::class, 'index'])->name('teachers.dashboard');
+        Route::resource('memos', MemoController::class);
+>>>>>>> 246028299ab0b863585b21089e78601ac25e79a2
     });
 
 # Resource Student
