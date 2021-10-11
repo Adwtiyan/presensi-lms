@@ -16,7 +16,8 @@ class MemoController extends Controller
      */
     public function index()
     {
-        $memos = Memo::with('user')->get();
+        $memos = Memo::where('user_id', auth()->id())->get();
+        // dd($memos);
         return view('pages.dashboard-teacher')->with([
             'memos' => $memos
         ]);

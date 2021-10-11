@@ -37,8 +37,7 @@
                     <table class="table table-hover my-0">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th class="d-none d-xl-table-cell">User</th>
+                                <th>No</th>
                                 <th class="d-none d-xl-table-cell">Description</th>
                                 <th>Date</th>
                                 <th class="d-none d-md-table-cell">Action</th>
@@ -48,7 +47,6 @@
                             @foreach ($memos as $key => $memo)
                             <tr>
                                 <td scope="row">{{ $key +1 }}</td>
-                                <td>{{ $memo->user->name }}</td>
                                 <td>{{ $memo->memo }}</td>
                                 <td>{{ $memo->date }}</td>
                                 <td>

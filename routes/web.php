@@ -44,9 +44,7 @@ Route::resource('rooms', RoomController::class)->middleware(['auth']);
 Route::prefix('teachers')
     ->middleware(['auth'])
     ->group(function() {
-        Route::get('/dashboard', function () {
-            return view('pages.dashboard-teacher');
-        })->name('teachers.dashboard');
+        Route::get('/dashboard', [MemoController::class, 'index'])->name('teachers.dashboard');
         Route::resource('memos', MemoController::class);
     });
 
