@@ -15,7 +15,7 @@ class BatchController extends Controller
     public function index()
     {
         $batch = Batch::all();
-        return view('pages.batch.edit')->with([
+        return view('pages.batch.index')->with([
             'batch'=>$batch]);
     }
 
@@ -37,7 +37,15 @@ class BatchController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'batches'=>'required'
+        ]);
 
+        Batch::create([
+            'name' => $request->batches
+        ]);
+
+        return redirect()->route('batches.index');
     }
 
     /**
@@ -57,9 +65,13 @@ class BatchController extends Controller
      * @param  \App\Models\Batch  $batch
      * @return \Illuminate\Http\Response
      */
-    public function edit(Batch $batch)
+    public function edit($batch)
     {
-        //
+        $batch = Batch::firstWhere('id', $batch);
+
+        return view('pages.batch.edit')->with([
+            'batches' => $batch
+        ]);
     }
 
     /**
@@ -69,9 +81,18 @@ class BatchController extends Controller
      * @param  \App\Models\Batch  $batch
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Batch $batch)
+    public function update(Request $request, $batch)
     {
-        //
+        $request->validate([
+            'batches'=>'required'
+        ]);
+
+        Batch::where('id',$batch)
+        ->update([
+            'name'=>$request->batches
+        ]);
+
+        return redirect()->route('batches.index');
     }
 
     /**
@@ -80,8 +101,10 @@ class BatchController extends Controller
      * @param  \App\Models\Batch  $batch
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Batch $batch)
+    public function destroy($batch)
     {
-        //
+        Batch::destroy($batch);
+
+        return redirect()->route('batches.index');
     }
 }

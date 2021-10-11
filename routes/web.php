@@ -38,7 +38,7 @@ Route::resource('schedules', ScheduleController::class)->middleware(['auth']);
 Route::resource('classrooms', ClassroomsController::class)->middleware(['auth']);
 Route::resource('courses', CourseController::class)->middleware(['auth']);
 Route::resource('rooms', RoomController::class)->middleware(['auth']);
-Route::resource('batch', BatchController::class);
+Route::resource('batches', BatchController::class);
 
 # Resource Teacher
 Route::prefix('teachers')
