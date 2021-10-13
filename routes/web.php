@@ -1,8 +1,16 @@
 <?php
 
+use App\Http\Controllers\ClassroomsController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\MemoController;
+
+
+use App\Http\Controllers\UserController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,13 +28,36 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function () {
-    return view('pages.test-content');
-});
+# Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+# User Setting
+Route::get('/profile', [UserController::class, 'show'])->middleware(['auth'])->name('profile.show');
+Route::put('/profile/{id_user}', [UserController::class, 'update'])->middleware(['auth'])->name('profile.update');
+
+# Resource Router
+Route::resource('schedules', ScheduleController::class)->middleware(['auth']);
+Route::resource('classrooms', ClassroomsController::class)->middleware(['auth']);
+Route::resource('courses', CourseController::class)->middleware(['auth']);
+Route::resource('rooms', RoomController::class)->middleware(['auth']);
+
+# Resource Teacher
+Route::prefix('teachers')
+    ->middleware(['auth'])
+    ->group(function() {
+        Route::get('/dashboard', [MemoController::class, 'index'])->name('teachers.dashboard');
+        Route::resource('memos', MemoController::class);
+    });
+
+# Resource Student
+Route::prefix('students')
+    ->namespace('students')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::get('/dashboard', function () {
+            return view('pages.dashboard-student');
+        })->name('students.dashboard');
+    });
 
 Route::resource('courses', CourseController::class);
 Route::resource('rooms', RoomController::class);

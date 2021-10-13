@@ -9,4 +9,9 @@ use App\Traits\Uuids;
 class Topic extends Model
 {
     use HasFactory, Uuids;
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course_id', 'id');
+    }
 }

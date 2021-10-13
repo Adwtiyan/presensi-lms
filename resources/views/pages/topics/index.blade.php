@@ -29,8 +29,8 @@
                     @foreach ($topics as $key => $value)
                         <tr>
                             <td scope="row">{{ $key + 1 }}</td>
-                            <td>{{ $value->course_id }}</td>
-                            <td>{{ $value->rooms_id }}</td>
+                            <td>{{ $value->course->course_title }}</td>
+                            <td>{{ $value->room_id }}</td>
                             <td>{{ $value->title }}</td>
                             <td>{{ $value->description }}</td>
                             <td>{{ $value->deadline }}</td>

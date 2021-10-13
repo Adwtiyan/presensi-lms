@@ -14,7 +14,8 @@ class TopicController extends Controller
      */
     public function index()
     {
-        $topics = Topic::all();
+        $topics = Topic::with('course')->get();
+        // return response()->json($topics);
         return view('pages.topics.index', compact( //compact untuk melempar data var
             'topics'
         ));
