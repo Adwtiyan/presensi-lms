@@ -5,6 +5,8 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\MemoController;
+
 
 use App\Http\Controllers\UserController;
 
@@ -40,12 +42,10 @@ Route::resource('rooms', RoomController::class)->middleware(['auth']);
 
 # Resource Teacher
 Route::prefix('teachers')
-    ->namespace('teachers')
     ->middleware(['auth'])
-    ->group(function () {
-        Route::get('/dashboard', function () {
-            return view('pages.dashboard-teacher');
-        })->name('teachers.dashboard');
+    ->group(function() {
+        Route::get('/dashboard', [MemoController::class, 'index'])->name('teachers.dashboard');
+        Route::resource('memos', MemoController::class);
     });
 
 # Resource Student
