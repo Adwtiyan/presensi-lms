@@ -19,7 +19,7 @@ class CreateAbsentsTable extends Migration
             $table->uuid('user_id');
             $table->time('start');
             $table->time('finish');
-            $table->string('info');
+            $table->longText('info');
             $table->boolean('status')->default('true');
             $table->dateTime('token_expired');
             $table->char('token', 5);

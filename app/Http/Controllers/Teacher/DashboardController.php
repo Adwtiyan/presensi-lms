@@ -7,9 +7,9 @@ use DateTimeZone;
 use DateInterval;
 use App\Models\Absent;
 use App\Models\Schedule;
-use App\Http\Controllers\Controller;
 use Hidehalo\Nanoid\Client;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
@@ -52,8 +52,21 @@ class DashboardController extends Controller
             'token' => $token
         ]);
 
+        return redirect()->route('dashboard.teachers.countdown', $token);
+    }
+
+    public function showAbsent($token) {
         return view('teacher-dashboard.absent')->with([
             'token' => $token
         ]);
+    }
+
+    public function stopAbsent($token) {
+        Absent::where('token', $token)
+        ->update([
+            'status' => 'false'
+        ]);
+
+        return redirect()->route('teachers.dashboard');
     }
 }
