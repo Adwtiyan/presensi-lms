@@ -2,6 +2,19 @@
 @section('contents')
 <main class="content">
     <div class="container-fluid p-0">
+
+        <div class="row justify-content-center">
+            <div class="col-5">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="border border-dark pt-2">
+                            <h1 id="time" class="row justify-content-center"></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="row justify-content-center">
             <div class="col-5">
                 <div class="card">
@@ -26,6 +39,33 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        function startTimer(duration, display) {
+                var timer = duration,
+                    minutes, seconds;
+                setInterval(function() {
+                    minutes = parseInt(timer / 60, 10);
+                    seconds = parseInt(timer % 60, 10);
+    
+                    minutes = minutes < 10 ? "0" + minutes : minutes;
+                    seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+                    display.textContent = minutes + ":" + seconds;
+    
+                    if (--timer < 0) {
+                        timer = duration;
+                    }
+                }, 1000);
+            }
+    
+            window.onload = function() {
+                var fiveMinutes = 60 * 45 * 2,
+                    display = document.querySelector('#time');
+                startTimer(fiveMinutes, display);
+            };
+    
+    </script>
 
     <script src="{{ asset('assets/admin-kit/js/qrcode.min.js') }}"></script>
     <script>
