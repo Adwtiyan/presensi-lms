@@ -14,7 +14,8 @@ class AddBatchInClassrooms extends Migration
     public function up()
     {
         Schema::table('classrooms', function (Blueprint $table) {
-            $table->foreign('batch_id')->references('id')->on('classrooms');
+            // $table->foreign('batch_id')->references('id')->on('classrooms');
+            $table->uuid('batch_id');
         });
     }
 

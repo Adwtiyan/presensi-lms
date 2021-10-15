@@ -29,6 +29,7 @@ class BatchController extends Controller
         return view('pages.batch.create');
     }
 
+
     /**
      * Store a newly created resource in storage.
      *

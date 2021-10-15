@@ -10,7 +10,7 @@ class Classrooms extends Model
 {
     use HasFactory,Uuids;
     protected $guarded = ['id'];
-    public function batches()
+    public function batch()
     {
         return $this->belongsTo(Batch::class, 'batch_id', 'id');
     }

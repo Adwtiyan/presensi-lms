@@ -3,11 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\Batch;
-use App\Models\Batches;
 use App\Models\Classrooms;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Arr;
 
 class ClassroomsFactory extends Factory
 {
@@ -25,7 +22,7 @@ class ClassroomsFactory extends Factory
      */
     public function definition()
     {
-        $batch = Batches::all('id')->random();
+        $batch = Batch::all('id')->random();
         return [
             'batch_id' => $batch,
             'name' => $this->faker->sentence()

@@ -8,6 +8,7 @@
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
+                    <th scope="col">Batch</th>
                     <th scope="col">Name Classroom</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -16,8 +17,11 @@
                     @foreach ($classrooms as $classroom)
                     <tr>
                         <td>{{ $classroom->id }}</td>
+                        <td>{{ $classroom->batch->name }}</td>
                         <td>{{ $classroom->name }}</td>
                         <td>
+                            <a href="{{route('batches.index',[$classroom->batch->id])}}"
+                                class="btn btn-primary waves-effect waves-light"> Batch</a>
                             <a href="{{ route('classrooms.edit', [$classroom->id]) }}"
                                 class="btn btn-warning waves-effect waves-light">Update</a>
                             <form class="d-inline"

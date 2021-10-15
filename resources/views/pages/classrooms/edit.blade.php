@@ -16,6 +16,15 @@
                                         <input class="form-control" type="text" name="classrooms" placeholder="Input Classroom Name"
                                             id="example-text-input" value="{{ $classroom->name }}">
                                     </div>
+                                    <label for="example-text-input" class="col-sm-3 col-form-label">Batch Name</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-select" aria-label="Default select example" name="batch_id">
+                                            <option value="" selected>Select Batches</option>
+                                            @foreach ($batches as $batch)
+                                            <option value="{{ $batch->id }}">{{ $batch->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary waves-effect waves-light float-right"><i
                                         class="mdi mdi-file-document-box-plus mr-2"></i>Update</button>

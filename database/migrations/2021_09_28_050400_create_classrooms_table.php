@@ -15,7 +15,6 @@ class CreateClassroomsTable extends Migration
     {
         Schema::create('classrooms', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('batch_id');
             $table->string('name');
             $table->timestamps();
         });
