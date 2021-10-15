@@ -56,13 +56,14 @@ Route::prefix('teachers')
     });
 
 # Resource Student
-// Route::prefix('students')
-//     ->namespace('students')
-//     ->middleware(['auth'])
-//     ->group(function() {
-//         Route::get('/dashboard', function () {
-//             return view('pages.dashboard-students');
-//         })->name('students.dashboard');
-//     });
+Route::prefix('students')
+    ->namespace('students')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::get('/dashboard', function () {
+            return view('pages.dashboard-student');
+        })->name('students.dashboard');
+    });
+
 
 require __DIR__ . '/auth.php';
