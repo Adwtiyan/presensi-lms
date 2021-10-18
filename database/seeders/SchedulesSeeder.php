@@ -8,6 +8,7 @@ use App\Models\Room;
 use Illuminate\Database\Seeder;
 use App\Models\Schedule;
 use App\Models\User;
+use App\Models\Batch;
 
 class SchedulesSeeder extends Seeder
 {
@@ -26,7 +27,12 @@ class SchedulesSeeder extends Seeder
         $course->course_title = 'Seeder Course Schedule';
         $course->save();
 
+        $batch = Batch::create([
+            'name' => 'Seeder Schedule Batch 1'
+        ]);
+
         $classroom = new Classrooms;
+        $classroom->batch_id = $batch->id;
         $classroom->name = 'Seeder Classsroom Schedule';
         $classroom->save();
 

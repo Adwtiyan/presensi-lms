@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Batch;
 use App\Models\Classrooms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -31,7 +32,7 @@ class ClassroomsController extends Controller
      */
     public function index()
     {
-        $classrooms = Classrooms::all();
+        $classrooms = Classrooms::with('batch')->get();
 
         return view('pages.classrooms.index')->with([
             'classrooms' => $classrooms
@@ -45,7 +46,10 @@ class ClassroomsController extends Controller
      */
     public function create()
     {
-        return view('pages.classrooms.create');
+        $batches = Batch::all();
+        return view('pages.classrooms.create')->with([
+            'batches' => $batches
+        ]);
     }
 
     /**
@@ -57,11 +61,13 @@ class ClassroomsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'classrooms'=>'required'
+            'batch_id' => 'required',
+            'classrooms' => 'required'
         ]);
 
         Classrooms::create([
-            'name' => $request->classrooms
+            'name' => $request->classrooms,
+            'batch_id' => $request->batch_id
         ]);
 
         return redirect()->route('classrooms.index');
@@ -86,9 +92,10 @@ class ClassroomsController extends Controller
      */
     public function edit($classrooms)
     {
+        $batches = Batch::all();
         $classrooms = Classrooms::firstWhere('id', $classrooms);
-
         return view('pages.classrooms.edit')->with([
+            'batches' => $batches,
             'classroom' => $classrooms
         ]);
     }
@@ -103,12 +110,14 @@ class ClassroomsController extends Controller
     public function update(Request $request, $classrooms)
     {
         $request->validate([
-            'classrooms'=>'required'
+            'batch_id' => 'required',
+            'classrooms' => 'required'
         ]);
 
         Classrooms::where('id',$classrooms)
         ->update([
-            'name'=>$request->classrooms
+            'name' => $request->classrooms,
+            'batch_id' => $request->batch_id
         ]);
 
         return redirect()->route('classrooms.index');
