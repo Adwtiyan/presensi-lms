@@ -22,9 +22,13 @@ class ClassroomsFactory extends Factory
      */
     public function definition()
     {
-        $batch = Batch::all('id')->random();
+        // $batch = Batch::all('id')->random();
+        $batch = Batch::create([
+            'name' => 'Seeder Batch 1'
+        ]);
+        // dd($batch->id);
         return [
-            'batch_id' => $batch,
+            'batch_id' => $batch->id,
             'name' => $this->faker->sentence()
         ];
     }

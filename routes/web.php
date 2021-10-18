@@ -6,6 +6,8 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\MemoController;
+
 
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -41,22 +43,21 @@ Route::resource('batches', BatchController::class);
 
 # Resource Teacher
 Route::prefix('teachers')
-    ->namespace('teachers')
     ->middleware(['auth'])
     ->group(function() {
-        Route::get('/dashboard', function () {
-            return view('pages.dashboard-teacher');
-        })->name('teachers.dashboard');
+        Route::get('/dashboard', [MemoController::class, 'index'])->name('teachers.dashboard');
+        Route::resource('memos', MemoController::class);
     });
 
 # Resource Student
-// Route::prefix('students')
-//     ->namespace('students')
-//     ->middleware(['auth'])
-//     ->group(function() {
-//         Route::get('/dashboard', function () {
-//             return view('pages.dashboard-students');
-//         })->name('students.dashboard');
-//     });
+Route::prefix('students')
+    ->namespace('students')
+    ->middleware(['auth'])
+    ->group(function () {
+        Route::get('/dashboard', function () {
+            return view('pages.dashboard-student');
+        })->name('students.dashboard');
+    });
+
 
 require __DIR__ . '/auth.php';
