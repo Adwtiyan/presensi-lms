@@ -1,15 +1,15 @@
 <?php
 
-use App\Http\Controllers\BatchController;
-use App\Http\Controllers\ClassroomsController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RoomController;
-use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\MemoController;
-
-
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\BatchController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ClassroomsController;
+use App\Http\Controllers\teacher\DashboardController as TeacherDashboardController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +45,14 @@ Route::resource('batches', BatchController::class);
 Route::prefix('teachers')
     ->middleware(['auth'])
     ->group(function() {
+        Route::get('/dashboard', function () {
+            return view('pages.dashboard-teacher');
+        })->name('teachers.dashboard');
+        Route::get('/schedules', [TeacherDashboardController::class, 'showScheduleByUserId'])->middleware(['auth'])->name('dashboard.teachers.schedules');
+        Route::get('/info', [TeacherDashboardController::class, 'createInfo'])->middleware('auth')->name('dashboard.teachers.info');
+        Route::post('/start-absent', [TeacherDashboardController::class, 'storeAbsent'])->middleware('auth')->name('dashboard.teachers.start-absent');
+        Route::get('/countdown/{token}', [TeacherDashboardController::class, 'showAbsent'])->middleware('auth')->name('dashboard.teachers.countdown');
+        Route::put('/stop-absent/{token}', [TeacherDashboardController::class, 'stopAbsent'])->middleware('auth')->name('dashboard.teachers.stop-absent');
         Route::get('/dashboard', [MemoController::class, 'index'])->name('teachers.dashboard');
         Route::resource('memos', MemoController::class);
     });
