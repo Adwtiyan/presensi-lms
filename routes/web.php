@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BatchController;
 use App\Http\Controllers\ClassroomsController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\DashboardController;
@@ -9,7 +10,6 @@ use App\Http\Controllers\MemoController;
 
 
 use App\Http\Controllers\UserController;
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,9 +36,10 @@ Route::put('/profile/{id_user}', [UserController::class, 'update'])->middleware(
 
 # Resource Router
 Route::resource('schedules', ScheduleController::class)->middleware(['auth']);
-Route::resource('classrooms', ClassroomsController::class)->middleware(['auth']);
-Route::resource('courses', CourseController::class)->middleware(['auth']);
+Route::resource('classrooms', ClassroomsController::class);
+Route::resource('courses', CourseController::class);
 Route::resource('rooms', RoomController::class)->middleware(['auth']);
+Route::resource('batches', BatchController::class);
 
 # Resource Teacher
 Route::prefix('teachers')
