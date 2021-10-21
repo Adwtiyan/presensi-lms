@@ -6,12 +6,8 @@ use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Classrooms extends Model
+class Batch extends Model
 {
     use HasFactory,Uuids;
     protected $guarded = ['id'];
-    public function batch()
-    {
-        return $this->belongsTo(Batch::class, 'batch_id', 'id');
-    }
 }
