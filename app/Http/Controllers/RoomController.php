@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use App\Http\Requests\RoomRequest;
+use Illuminate\Support\Facades\Gate;
 
 class RoomController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function($request, $next){
+            if(Gate::allows('isAdmin')) return $next($request);
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
+
     /**
      * Display a listing of the resource.
      *
