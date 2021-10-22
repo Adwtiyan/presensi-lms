@@ -62,7 +62,7 @@ Route::prefix('teachers')
 # Resource Student
 Route::prefix('students')
     ->namespace('students')
-    // ->middleware(['auth'])
+    ->middleware(['auth'])
     ->group(function () {
         Route::get('/dashboard', function () {
             return view('pages.dashboard-student');
