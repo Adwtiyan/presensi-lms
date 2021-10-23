@@ -50,6 +50,7 @@
 
     <!-- JS -->
     @include('includes.js')
+    @stack('additional-js')
 
 </body>
 

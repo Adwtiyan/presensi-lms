@@ -38,4 +38,9 @@ class DashboardController extends Controller
 
         ]);
     }
+
+    public function cusdis()
+    {
+        return view('pages.test.cusdis');
+    }
 }

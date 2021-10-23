@@ -29,6 +29,7 @@ Route::get('/', function () {
 
 # Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard/cusdis', [DashboardController::class, 'cusdis'])->middleware(['auth'])->name('dashboard  .cusdis');
 
 # User Setting
 Route::get('/profile', [UserController::class, 'show'])->middleware(['auth'])->name('profile.show');
