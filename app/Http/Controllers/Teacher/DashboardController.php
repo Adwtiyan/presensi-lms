@@ -10,9 +10,20 @@ use App\Models\Schedule;
 use Hidehalo\Nanoid\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function($request, $next){
+
+            if(Gate::allows('isTeacher')) return $next($request);
+
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
+
     public function showScheduleByUserId() {
         $user_id = auth()->id();
         $schedules = Schedule::join('courses', 'courses.id', '=', 'schedules.course_id')
