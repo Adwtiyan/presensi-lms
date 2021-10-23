@@ -17,12 +17,12 @@ class ClassroomsController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware(function($request, $next){
+        $this->middleware(function($request, $next){
 
-        //     if(Gate::allows('isAdmin')) return $next($request);
+            if(Gate::allows('isAdmin')) return $next($request);
 
-        //     abort(403, 'Anda tidak memiliki cukup hak akses');
-        // });
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
     }
 
     /**

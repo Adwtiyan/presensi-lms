@@ -5,10 +5,21 @@ use App\Http\Requests\MemoRequest;
 use App\Models\Memo;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 
 class MemoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function($request, $next){
+
+            if(Gate::allows('isTeacher')) return $next($request);
+
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
+
     /**
      * Display a listing of the resource.
      *
