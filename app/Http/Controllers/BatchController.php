@@ -14,7 +14,7 @@ class BatchController extends Controller
      */
     public function index()
     {
-        $batch = Batch::all();
+        $batch = Batch::simplePaginate(5);
         return view('pages.batch.index')->with([
             'batch'=>$batch]);
     }
