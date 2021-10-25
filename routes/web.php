@@ -9,7 +9,7 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClassroomsController;
 use App\Http\Controllers\teacher\DashboardController as TeacherDashboardController;
-
+use App\Http\Controllers\TopicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +40,7 @@ Route::resource('classrooms', ClassroomsController::class);
 Route::resource('courses', CourseController::class);
 Route::resource('rooms', RoomController::class)->middleware(['auth']);
 Route::resource('batches', BatchController::class);
+Route::resource('topics', TopicController::class);
 
 # Resource Teacher
 Route::prefix('teachers')
