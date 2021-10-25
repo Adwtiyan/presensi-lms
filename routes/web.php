@@ -5,11 +5,11 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\MemoController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BatchController;
-use App\Http\Controllers\AbsentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClassroomsController;
+use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use App\Http\Controllers\teacher\DashboardController as TeacherDashboardController;
 
 use Illuminate\Support\Facades\Route;
@@ -67,9 +67,9 @@ Route::prefix('students')
         Route::get('/dashboard', function () {
             return view('pages.dashboard-student');
         })->name('students.dashboard');
-        Route::get('/form-absent', [AbsentController::class, 'create'])->name('students.form-absent');
-        Route::post('/absent', [AbsentController::class, 'store'])->name('students.absent');
-        Route::get('/absent/{message}', [AbsentController::class, 'message_absent'])->name('students.message-absent');
+        Route::get('/form-absent', [StudentDashboardController::class, 'create'])->name('students.form-absent');
+        Route::post('/absent', [StudentDashboardController::class, 'store'])->name('students.absent');
+        Route::get('/absent/{message}', [StudentDashboardController::class, 'message_absent'])->name('students.message-absent');
     });
 
 
