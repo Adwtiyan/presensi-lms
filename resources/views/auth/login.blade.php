@@ -15,7 +15,7 @@
 <!-- Section Form Primary -->
 @section('forms')
 
-<form method="POST" action="{{ route('dashboard') }}">
+<form method="POST" action="{{ route('login') }}">
     @csrf
 
     <!-- Email Address -->
