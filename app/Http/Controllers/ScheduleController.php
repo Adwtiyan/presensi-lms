@@ -18,7 +18,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $schedules = Schedule::with('courses','classrooms','rooms')->get();
+        $schedules = Schedule::with('courses','classrooms','rooms')->simplePaginate(5);
         return view('pages.schedules.index')->with([
             'schedules' => $schedules
         ]);

@@ -40,7 +40,7 @@
                 </tbody>
             </table>
         </div>
-        {{-- {{ $classrooms->links() }} --}}
+        {{ $classrooms->links() }}
     </main>
 
 @endsection
