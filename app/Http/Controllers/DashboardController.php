@@ -6,9 +6,20 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Schedule;
 use App\Models\Classrooms;
+use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function($request, $next){
+
+            if(Gate::allows('isAdmin')) return $next($request);
+
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
+
     public function index()
     {
         // return view('pages.test-content');
@@ -26,5 +37,10 @@ class DashboardController extends Controller
             'classrooms' => $classrooms
 
         ]);
+    }
+
+    public function cusdis()
+    {
+        return view('pages.test.cusdis');
     }
 }
