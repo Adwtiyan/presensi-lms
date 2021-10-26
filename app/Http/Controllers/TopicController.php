@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\topic;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -14,7 +14,7 @@ class TopicController extends Controller
      */
     public function index()
     {
-        $topics = topic::with('courses','classrooms')->get();
+        $topics = Topic::with('courses','classrooms')->get();
         return view('pages.topics.index')->with([
             'topics' => $topics
         ]);
@@ -44,10 +44,10 @@ class TopicController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\topic  $topic
+     * @param  \App\Models\Topic  $Topic
      * @return \Illuminate\Http\Response
      */
-    public function show(topic $topic)
+    public function show(Topic $Topic)
     {
         //
     }
@@ -55,10 +55,10 @@ class TopicController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\topic  $topic
+     * @param  \App\Models\Topic  $Topic
      * @return \Illuminate\Http\Response
      */
-    public function edit(topic $topic)
+    public function edit(Topic $Topic)
     {
         //
     }
@@ -67,10 +67,10 @@ class TopicController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\topic  $topic
+     * @param  \App\Models\Topic  $Topic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, topic $topic)
+    public function update(Request $request, Topic $Topic)
     {
         //
     }
@@ -78,10 +78,10 @@ class TopicController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\topic  $topic
+     * @param  \App\Models\Topic  $Topic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(topic $topic)
+    public function destroy(Topic $Topic)
     {
         //
     }
