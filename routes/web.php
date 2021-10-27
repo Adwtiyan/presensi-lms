@@ -39,10 +39,10 @@ Route::put('/profile/{id_user}', [UserController::class, 'update'])->middleware(
 
 # Resource Router
 Route::resource('schedules', ScheduleController::class)->middleware(['auth']);
-Route::resource('classrooms', ClassroomsController::class);
-Route::resource('courses', CourseController::class);
+Route::resource('classrooms', ClassroomsController::class)->middleware(['auth']);
+Route::resource('courses', CourseController::class)->middleware(['auth']);
 Route::resource('rooms', RoomController::class)->middleware(['auth']);
-Route::resource('batches', BatchController::class);
+Route::resource('batches', BatchController::class)->middleware(['auth']);
 
 # Resource Teacher
 Route::prefix('teachers')

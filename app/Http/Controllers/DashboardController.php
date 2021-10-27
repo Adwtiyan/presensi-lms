@@ -15,6 +15,12 @@ class DashboardController extends Controller
         $this->middleware(function($request, $next){
 
             if(Gate::allows('isAdmin')) return $next($request);
+            if(Gate::allows('isTeacher')) {
+                return redirect()->route('teachers.dashboard');
+            }
+            if(Gate::allows('isStudent')) {
+                return redirect()->route('students.dashboard');
+            }
 
             abort(403, 'Anda tidak memiliki cukup hak akses');
         });
