@@ -56,6 +56,7 @@
                 </table>
             </div> <!-- end col -->
         </div> <!-- end row -->
+        {{ $schedules->links() }}
     </main>
 
 @endsection

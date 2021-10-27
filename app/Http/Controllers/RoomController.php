@@ -23,7 +23,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $rooms = Room::all();
+        $rooms = Room::simplePaginate(10);
         return view('pages.rooms.index')->with([
             'rooms' => $rooms
         ]);
