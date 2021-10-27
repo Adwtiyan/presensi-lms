@@ -30,7 +30,7 @@ class TopicSeeder extends Seeder
         $classroom->name = 'Seeder Classroom Topic';
         $classroom->save();
 
-        $topic = new topic();
+        $topic = new Topic;
         $topic->course_id = $course->id;
         $topic->classroom_id = $classroom->id;
         $topic->title = 'Seeder Topic';

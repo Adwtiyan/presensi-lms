@@ -18,7 +18,7 @@ class ClassroomSeeder extends Seeder
     {
         $batch = Batch::factory(1)->create();
         $classroom = new Classrooms;
-        $classroom->batch_id = $batch->id;
+        $classroom->batch_id = $batch[0]->id;
         $classroom->name = 'Seeder Classroom Batch 1';
         $classroom->save();
     }
