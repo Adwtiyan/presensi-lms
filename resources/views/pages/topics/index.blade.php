@@ -36,6 +36,8 @@
                 </tbody>
               </table>
         </div>
+
+        @comments(['model' => $topics])
     </main>
 
 @endsection

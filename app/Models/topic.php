@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Traits\Uuids;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravelista\Comments\Commentable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Topic extends Model
 {
-    use HasFactory,Uuids;
+    use HasFactory, Uuids, Commentable;
 
     protected $guarded = ['id'];
 

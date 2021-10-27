@@ -6,11 +6,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravelista\Comments\Commenter;
 use App\Traits\Uuids;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, Uuids;
+    use HasFactory, Notifiable, Uuids, Commenter;
 
     /**
      * The attributes that are mass assignable.

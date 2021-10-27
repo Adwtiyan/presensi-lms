@@ -11,7 +11,7 @@
                 </a>
 
                 <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" class="avatar img-fluid rounded me-1" /> <span
+                    <img src="{{ Auth::user()->avatar == 'avatar.jpg' ? asset('assets/admin-kit/img/avatars/avatar.jpg') : asset('storage/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" class="avatar img-fluid rounded me-1" /> <span
                         class="text-dark">{{ Auth::user()->name }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
