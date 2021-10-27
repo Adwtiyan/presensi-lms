@@ -17,7 +17,7 @@ class CourseController extends Controller
     public function index()
     {
         return view('pages.courses.index')->with([
-            'courses' => Course::simplePaginate(5)
+            'courses' => Course::simplePaginate(10)
         ]);
     }
 

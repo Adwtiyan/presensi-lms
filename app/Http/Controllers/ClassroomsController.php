@@ -32,7 +32,7 @@ class ClassroomsController extends Controller
      */
     public function index()
     {
-        $classrooms = Classrooms::with('batch')->simplePaginate(5);
+        $classrooms = Classrooms::with('batch')->simplePaginate(10);
 
         return view('pages.classrooms.index')->with([
             'classrooms' => $classrooms
