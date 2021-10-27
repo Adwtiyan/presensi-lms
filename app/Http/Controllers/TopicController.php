@@ -14,7 +14,7 @@ class TopicController extends Controller
      */
     public function index()
     {
-        $topics = Topic::with('courses','classrooms')->get();
+        $topics = Topic::all()->first();
         return view('pages.topics.index')->with([
             'topics' => $topics
         ]);

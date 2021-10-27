@@ -1,57 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-    <meta name="author" content="AdminKit">
-    <meta name="keywords"
-        content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="shortcut icon" href="{{ asset('assets/admin-kit/img/icons/icon-48x48.png') }}" />
-
-    <title>Amikom Center</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
-    @include('includes.css')
-
-</head>
-
-<body>
-    <div class="wrapper">
-        <nav id="sidebar" class="sidebar js-sidebar">
-            <div class="sidebar-content js-simplebar">
-                <a class="sidebar-brand" href="index.html">
-                    <span class="align-middle">Amikom Center</span>
-                </a>
-
-                <!-- SIDEBAR -->
-                @include('layouts.apps.sidebar')
-
-            </div>
-        </nav>
-
-        <div class="main">
-            <!-- NAVBAR -->
-            @include('layouts.apps.navbar')
-
-            <!-- CONTENT -->
-            @yield('contents')
-            coba content
-
-            <!-- FOOTER -->
-            @include('layouts.apps.footer')
+@extends('layouts.apps.global')
+@section('contents')
+    <main class="content">
+        <div class="container-fluid p-0">
+            <h1 class="h3 mb-3">topics</h1>
+            <a href="{{ route('topics.create') }}" class="btn btn-primary">Add New topics</a>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name Batch</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope = "row">1</td>
+                        <td>{{ $topics->id }}</td>
+                        <td>{{ $topics->title }}</td>
+                        <td>
+                            <a href="{{ route('topics.edit', [$topics->id]) }}"
+                                class="btn btn-warning waves-effect waves-light">Update</a>
+                            <form class="d-inline"
+                                onsubmit="return confirm('Data will be Deleted, Are you sure?')"
+                                action="{{ route('topics.destroy', [$topics->id]) }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="submit" value="Delete"
+                                    class="btn btn-danger waves-effect waves-light">
+                                {{-- <button type="submit">Delete</button>
+                                --}}
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+              </table>
         </div>
-    </div>
+    </main>
 
-    <!-- JS -->
-    @include('includes.js')
-
-</body>
-
-</html>
+@endsection
