@@ -57,7 +57,7 @@
 
 <div class="text-center mt-4">
     <center>
-        <p>Already have an account? <a href="{{ _('login') }}">Sign In</a></p>
+        <p>Already have an account? <a href="{{ __('login') }}">Sign In</a></p>
     </center>
 </div>
 
