@@ -27,6 +27,12 @@
         </a>
     </li>
 
+    <li class="sidebar-item {{ request()->is('batches') ? 'active' : '' }}">
+        <a class="sidebar-link" href="{{ route('batches.index') }}">
+            <i class="align-middle" data-feather="list"></i> <span class="align-middle">Batches</span>
+        </a>
+    </li>
+
     <li class="sidebar-item {{ request()->is('schedules') ? 'active' : '' }}">
         <a class="sidebar-link" href="{{ route('schedules.index') }}">
             <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Schedules</span>
