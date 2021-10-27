@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\MemoController;
 use App\Http\Controllers\UserController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClassroomsController;
+use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use App\Http\Controllers\teacher\DashboardController as TeacherDashboardController;
 use App\Http\Controllers\TopicController;
 use Illuminate\Support\Facades\Route;
@@ -37,11 +39,11 @@ Route::put('/profile/{id_user}', [UserController::class, 'update'])->middleware(
 
 # Resource Router
 Route::resource('schedules', ScheduleController::class)->middleware(['auth']);
-Route::resource('classrooms', ClassroomsController::class);
-Route::resource('courses', CourseController::class);
+Route::resource('classrooms', ClassroomsController::class)->middleware(['auth']);
+Route::resource('courses', CourseController::class)->middleware(['auth']);
 Route::resource('rooms', RoomController::class)->middleware(['auth']);
-Route::resource('batches', BatchController::class);
 Route::resource('topics', TopicController::class);
+Route::resource('batches', BatchController::class)->middleware(['auth']);
 
 # Resource Teacher
 Route::prefix('teachers')
@@ -67,6 +69,9 @@ Route::prefix('students')
         Route::get('/dashboard', function () {
             return view('pages.dashboard-student');
         })->name('students.dashboard');
+        Route::get('/form-absent', [StudentDashboardController::class, 'create'])->name('students.form-absent');
+        Route::post('/absent', [StudentDashboardController::class, 'store'])->name('students.absent');
+        Route::get('/absent/{message}', [StudentDashboardController::class, 'message_absent'])->name('students.message-absent');
     });
 
 

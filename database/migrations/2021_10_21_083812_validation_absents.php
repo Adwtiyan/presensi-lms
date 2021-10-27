@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCourseAndClassroomInTopics extends Migration
+class ValidationAbsents extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class AddCourseAndClassroomInTopics extends Migration
      */
     public function up()
     {
-        Schema::table('topics', function (Blueprint $table) {
+        Schema::create('validation_absents', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->uuid('user_id');
             $table->uuid('course_id');
-            $table->uuid('classroom_id');
+            $table->char('token', 5);
+            $table->dateTime('time');
+            $table->timestamps();
         });
     }
 
@@ -26,8 +30,6 @@ class AddCourseAndClassroomInTopics extends Migration
      */
     public function down()
     {
-        Schema::table('topics', function (Blueprint $table) {
-            Schema::dropIfExists('topics');
-        });
+        Schema::dropIfExists('validation_absents');
     }
 }
