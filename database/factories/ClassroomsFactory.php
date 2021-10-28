@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Batch;
 use App\Models\Classrooms;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ClassroomsFactory extends Factory
@@ -22,8 +22,14 @@ class ClassroomsFactory extends Factory
      */
     public function definition()
     {
+        // $batch = Batch::all('id')->random();
+        $batch = Batch::create([
+            'name' => 'Seeder Batch 1'
+        ]);
+        // dd($batch->id);
         return [
-            'name'=>$this->faker->sentence()
+            'batch_id' => $batch->id,
+            'name' => $this->faker->sentence()
         ];
     }
 }

@@ -15,7 +15,7 @@
 <!-- Section Form Primary -->
 @section('forms')
 
-<form method="POST" action="{{ route('dashboard') }}">
+<form method="POST" action="{{ route('login') }}">
     @csrf
 
     <!-- Email Address -->
@@ -33,7 +33,7 @@
         <x-input id="password" placeholder="Enter your password" class="form-control form-control-lg" type="password"
             name="password" required autocomplete="new-password" />
         <small>
-            <a href="{{ _('forgot-password') }}">Forgot password?</a>
+            <a href="{{ __('forgot-password') }}">Forgot password?</a>
         </small>
     </div>
 

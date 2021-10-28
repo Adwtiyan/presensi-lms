@@ -6,9 +6,18 @@ use App\Models\Course;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Contracts\Service\Attribute\Required;
+use Illuminate\Support\Facades\Gate;
 
 class CourseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(function($request, $next){
+            if(Gate::allows('isAdmin')) return $next($request);
+            abort(403, 'Anda tidak memiliki cukup hak akses');
+        });
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +26,7 @@ class CourseController extends Controller
     public function index()
     {
         return view('pages.courses.index')->with([
-            'courses' => Course::all()
+            'courses' => Course::simplePaginate(10)
         ]);
     }
 

@@ -14,12 +14,10 @@ class TopicController extends Controller
      */
     public function index()
     {
-        $topics = Topic::with('course')->get();
-        // return response()->json($topics);
-        return view('pages.topics.index', compact( //compact untuk melempar data var
-            'topics'
-        ));
-    }
+        $topics = Topic::with('courses', 'classrooms');
+        return view('pages.topics.index')->with([
+            'topics' = $topics
+        ]);
 
     /**
      * Show the form for creating a new resource.
@@ -39,16 +37,7 @@ class TopicController extends Controller
      */
     public function store(Request $request)
     {
-        $topic = new Topic();
-        $topic->course_id = $request->course_id;
-        $topic->rooms_id = $request->rooms_id;
-        $topic->title = $request->title;
-        $topic->description = $request->description;
-        $topic->deadline = $request->deadline;
-        $topic->value = $request->value;
-        $topic->save();
-
-        return redirect('topics');
+        //
     }
 
     /**
@@ -70,10 +59,7 @@ class TopicController extends Controller
      */
     public function edit(Topic $topic)
     {
-        $topic = Topic::find($topic->id); //menemukan berdasarkn id
-        return view('pages.topics.edit', compact(
-            'topic'
-        ));
+        //
     }
 
     /**
@@ -85,16 +71,7 @@ class TopicController extends Controller
      */
     public function update(Request $request, Topic $topic)
     {
-        $topic = Topic::find($topic->id);
-        $topic->course_id = $request->course_id;
-        $topic->rooms_id = $request->rooms_id;
-        $topic->title = $request->title;
-        $topic->description = $request->description;
-        $topic->deadline = $request->deadline;
-        $topic->value = $request->value;
-        $topic->save();
-
-        return redirect('topics');
+        //
     }
 
     /**
@@ -105,8 +82,6 @@ class TopicController extends Controller
      */
     public function destroy(Topic $topic)
     {
-        $topic = Topic::find($topic->id);
-        $topic->delete();
-        return redirect('topics');
+        //
     }
 }
