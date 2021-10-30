@@ -17,8 +17,8 @@
                     <thead class="table-dark">
                         <tr>
                             <th>NO</th>
-                            <th>Schedule ID</th>
                             <th>Course Title</th>
+                            <th>Teacher</th>
                             <th>Classroom</th>
                             <th>Room Code</th>
                             <th>Day</th>
@@ -31,8 +31,8 @@
                         @foreach ($schedules as $key => $schedule)
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $schedule->id }}</td>
                                 <td>{{ $schedule->courses->course_title }}</td>
+                                <td>{{ $schedule->name }}</td>
                                 <td>{{ $schedule->classrooms->name }}</td>
                                 <td>{{ $schedule->rooms->room_code }}</td>
                                 <td>{{ $schedule->day }}</td>
