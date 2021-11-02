@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Classrooms;
-use App\Models\Course;
 use App\Models\Topic;
+use App\Models\Course;
+use App\Models\Classrooms;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TopicFactory extends Factory
@@ -29,7 +29,6 @@ class TopicFactory extends Factory
             $course = Course::created([
                 'name' => 'Seeder Course 1'
             ]);
-            // dd($batch->id);
             return [
                 'course_id' => $course->id,
                 'classroom_id' => $classroom->id,

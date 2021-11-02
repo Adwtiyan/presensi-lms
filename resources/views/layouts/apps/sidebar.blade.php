@@ -44,7 +44,7 @@
     </li>
 
     <li class="sidebar-item {{ request()->is('cek') ? 'active' : '' }}">
-        <a class="sidebar-link" href="ui-buttons.html">
+        <a class="sidebar-link" href="{{ route('topics.index') }}">
             <i class="align-middle" data-feather="clipboard"></i> <span class="align-middle">Topic</span>
         </a>
     </li>

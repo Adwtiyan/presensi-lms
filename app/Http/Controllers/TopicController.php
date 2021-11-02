@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classrooms;
+use App\Models\Course;
 use App\Models\Topic;
 use Illuminate\Http\Request;
 
@@ -14,10 +16,11 @@ class TopicController extends Controller
      */
     public function index()
     {
-        $topics = Topic::with('courses', 'classrooms');
+        $topics = Topic::with('courses', 'classrooms')->simplePaginate(10);
         return view('pages.topics.index')->with([
-            'topics' = $topics
+            'topics' => $topics
         ]);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -26,7 +29,14 @@ class TopicController extends Controller
      */
     public function create()
     {
-        return view('pages.topics.create');
+        $topic = Topic::all();
+        $classroom = Classrooms::all();
+        $course = Course::all();
+        return view('pages.topics.create')->with([
+            'topics' => $topic,
+            'classrooms' => $classroom,
+            'courses' => $course
+        ]);
     }
 
     /**
@@ -37,7 +47,15 @@ class TopicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $topic = new Topic;
+        $topic->course_id = $request->course_id;
+        $topic->classroom_id = $request->classroom_id;
+        $topic->title = $request->title;
+        $topic->description = $request->description;
+        $topic->deadline = $request->deadline;
+        $topic->total_point = $request->total_point;
+        $topic->save();
+        return redirect()->route('topics.index');
     }
 
     /**
@@ -57,9 +75,17 @@ class TopicController extends Controller
      * @param  \App\Models\Topic  $topic
      * @return \Illuminate\Http\Response
      */
-    public function edit(Topic $topic)
+    public function edit($topic)
     {
-        //
+        $course = Course::all();
+        $classroom = Classrooms::all();
+        $topic = Topic::firstWhere('id', $topic);
+
+        return view('pages.topics.edit')->with([
+            'topic' => $topic,
+            'classrooms' => $classroom,
+            'courses' => $course
+        ]);
     }
 
     /**
@@ -69,9 +95,22 @@ class TopicController extends Controller
      * @param  \App\Models\Topic  $topic
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Topic $topic)
+    public function update(Request $request, $topic)
     {
-        //
+       $request->validate([
+           'course_id' => 'required',
+           'classroom_id' => 'required'
+       ]);
+       Topic::where('id', $topic)
+       ->update([
+           'course_id' => $request->course_id,
+           'classroom_id' => $request->classroom_id,
+           'title' => $request->title,
+           'deadline' => $request->deadline,
+           'description' => $request->description,
+           'total_point' => $request->total_point
+       ]);
+        return redirect()->route('topics.index');
     }
 
     /**
@@ -80,8 +119,10 @@ class TopicController extends Controller
      * @param  \App\Models\Topic  $topic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Topic $topic)
+    public function destroy($topic)
     {
-        //
+        Topic::destroy($topic);
+
+        return redirect()->route('topics.index');
     }
 }

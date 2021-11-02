@@ -6,14 +6,29 @@
             <div class="col-6 mx-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ url('topics/'.$topic->id) }}" method="POST">
+                        <form action="{{ route('topics.update', $topic->id) }}" method="POST">
                             @csrf
-                            <input type="hidden" name="_method" value="PATCH">
-                            <h3 class="text-center">Form Add Topic</h3>
-                            <label class="form-label">Course ID</label>
-                            <input required type="text" class="form-control mb-3" name="course_id" value="{{ $topic->course_id }}">
-                            <label class="form-label">Room ID</label>
-                            <input required type="text" class="form-control mb-3" name="rooms_id" value="{{ $topic->rooms_id }}">
+                            @method('put')
+                            {{-- <input type="hidden" name="_method" value="GET"> --}}
+                            <h3 class="text-center">Form Edit Topic</h3>
+                            <label for="example-text-input" class="col-sm-3 col-form-label">Course</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-select" aria-label="Default select example" name="course_id" value="{{ $topic->course_id }}">
+                                            {{-- <option value="" selected>Select Courses</option> --}}
+                                            @foreach ($courses as $course)
+                                            <option value="{{ $course->id }}">{{ $course->course_title }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                            <label for="example-text-input" class="col-sm-3 col-form-label">Classroom</label>
+                                    <div class="col-sm-12">
+                                        <select class="form-select" aria-label="Default select example" name="classroom_id" value="{{ $topic->classroom_id }}">
+                                            {{-- <option value="" selected>Select Classroom</option> --}}
+                                            @foreach ($classrooms as $classroom)
+                                            <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                             <label class="form-label">Title</label>
                             <input required type="text" class="form-control mb-3" name="title" value="{{ $topic->title }}">
                             <label class="form-label">Description</label>
@@ -21,7 +36,7 @@
                             <label class="form-label mb-3">Deadline</label>
                             <input required type="datetime" class="form-control mb-3" name="deadline" value="{{ $topic->deadline }}">
                             <label class="form-label mb-3">Value</label>
-                            <input required type="number" class="form-control mb-3" name="nilai" value="{{ $topic->value }}">
+                            <input required type="number" class="form-control mb-3" name="total_point" value="{{ $topic->total_point }}">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-2">
                                 <button class="btn btn-primary col-12" type="submit">SIMPAN</button>
                             </div>
