@@ -14,12 +14,12 @@ class ScheduleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(function($request, $next){
-            if(Gate::allows('isAdmin')) return $next($request);
+        $this->middleware(function ($request, $next) {
+            if (Gate::allows('isAdmin')) return $next($request);
             abort(403, 'Anda tidak memiliki cukup hak akses');
         });
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +27,7 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $schedules = Schedule::with('courses','classrooms','rooms')->simplePaginate(10);
+        $schedules = Schedule::with('classrooms', 'rooms')->join('courses', 'courses.id', '=', 'schedules.course_id')->join('users', 'users.id', '=', 'courses.user_id')->simplePaginate(10);
         return view('pages.schedules.index')->with([
             'schedules' => $schedules
         ]);
