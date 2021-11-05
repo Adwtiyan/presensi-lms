@@ -93,7 +93,7 @@ class ClassroomsController extends Controller
     public function edit($classrooms)
     {
         $batches = Batch::all();
-        $classrooms = Classrooms::firstWhere('id', $classrooms);
+        $classrooms = Classrooms::findOrFail('id', $classrooms);
         return view('pages.classrooms.edit')->with([
             'batches' => $batches,
             'classroom' => $classrooms
