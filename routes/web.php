@@ -26,7 +26,6 @@ use App\Http\Controllers\teacher\DashboardController as TeacherDashboardControll
 */
 
 Route::get('/', function () {
-    PushAbsent::dispatch('Hello, Malika!');
     return view('welcome');
 });
 
@@ -34,6 +33,9 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::get('/dashboard/cusdis', [DashboardController::class, 'cusdis'])->middleware(['auth'])->name('dashboard.cusdis');
 Route::get('/dashboard/pusher', [DashboardController::class, 'test_pusher'])->middleware(['auth'])->name('dashboard.pusher');
+Route::get('/pusher/created', function () {
+    PushAbsent::dispatch('Hello, Malika!'); // TEST PUSHER CREATED
+});
 
 # User Setting
 Route::get('/profile', [UserController::class, 'show'])->middleware(['auth'])->name('profile.show');

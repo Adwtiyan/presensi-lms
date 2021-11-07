@@ -5,18 +5,11 @@
     </main>
 @endsection
 @push('additional-js')
-    {{-- <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     <script>
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
-
-        var pusher = new Pusher('2a915851246c858c9ecd', {
-            cluster: 'ap1'
+        Echo.channel('push-absent').listen('PushAbsent', (data) => {
+            console.log('Success!');
+            console.log(data);
         });
-
-        var channel = pusher.subscribe('my-channel');
-        channel.bind('my-event', function(data) {
-            alert(JSON.stringify(data));
-        });
-    </script> --}}
+    </script>
 @endpush

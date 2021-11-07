@@ -54,8 +54,6 @@ class DashboardController extends Controller
 
     public function test_pusher()
     {
-        PushAbsent::dispatch('Hello, Malika!');
-
         return view('pages.test.pusher');
     }
 }
