@@ -15,15 +15,17 @@ class PushAbsent implements ShouldBroadcast
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $attrs;
+    public $channel;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($attrs)
+    public function __construct($attrs, $channel = 'push-absent')
     {
         $this->attrs = $attrs;
+        $this->channel = $channel;
     }
 
     /**
@@ -34,6 +36,6 @@ class PushAbsent implements ShouldBroadcast
     public function broadcastOn()
     {
         // return new PrivateChannel('channel-name');
-        return new Channel('push-absent');
+        return new Channel($this->channel);
     }
 }

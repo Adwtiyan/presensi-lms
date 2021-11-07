@@ -21,7 +21,7 @@ class AddNewFieldUsersTable extends Migration
                 'address' => null,
                 'date_of_birth' => null
             ]));
-            $table->string('avatar')->nullable();
+            $table->string('avatar')->default('avatar.jpg');
             $table->jsonb('extra')->nullable('[]');
         });
     }

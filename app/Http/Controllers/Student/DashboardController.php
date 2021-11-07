@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Student;
 
+use App\Events\PushAbsent;
 use DateTime;
 use DateTimeZone;
 use App\Models\Absent;
@@ -25,9 +26,9 @@ class DashboardController extends Controller
             'token' => 'required'
         ]);
 
-        $user_id = auth()->id();
+        $user = auth()->user();
         $token = Absent::firstWhere('token', $request->token);
-        $absent_cek = ValidationAbsent::where('token', $request->token)->where('user_id', $user_id)->first();
+        $absent_cek = ValidationAbsent::where('token', $request->token)->where('user_id', $user->id)->first();
         $time = new DateTime("now", new DateTimeZone('Asia/Jakarta'));
         $time_now = $time->format('Y-m-d H:i:s');
 
@@ -59,11 +60,19 @@ class DashboardController extends Controller
             $course = Schedule::firstWhere('id', $token->schedule_id);
 
             ValidationAbsent::create([
-                'user_id' => $user_id,
+                'user_id' => $user->id,
                 'course_id' => $course->course_id,
                 'token' => $request->token,
                 'time' => $time
             ]);
+
+            $arr_data = [
+                'name' => $user->name,
+                'time' => $time
+            ];
+
+
+            PushAbsent::dispatch($arr_data, $request->token);
         }
 
         return redirect()->route('students.message-absent', $message);

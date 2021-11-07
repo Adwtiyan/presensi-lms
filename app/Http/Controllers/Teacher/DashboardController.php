@@ -10,6 +10,7 @@ use App\Models\Schedule;
 use Hidehalo\Nanoid\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ValidationAbsent;
 use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
@@ -67,8 +68,11 @@ class DashboardController extends Controller
     }
 
     public function showAbsent($token) {
+        $data = ValidationAbsent::with('user')->where('token', $token)->get();
+
         return view('teacher-dashboard.absent')->with([
-            'token' => $token
+            'token' => $token,
+            'data' => $data
         ]);
     }
 
