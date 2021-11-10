@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Schedule;
 use App\Models\Classrooms;
+
+use App\Events\PushAbsent;
 use Illuminate\Support\Facades\Gate;
 
 class DashboardController extends Controller
@@ -48,5 +50,10 @@ class DashboardController extends Controller
     public function cusdis()
     {
         return view('pages.test.cusdis');
+    }
+
+    public function test_pusher()
+    {
+        return view('pages.test.pusher');
     }
 }
