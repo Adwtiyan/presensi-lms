@@ -30,9 +30,9 @@
                             <label class="form-label">Title</label>
                             <input type="text" class="form-control mb-3" placeholder="Tugas - 5 xxx" name="title" required>
                             <label class="form-label">Description</label>
-                            <input type="text" class="form-control mb-3" name="description" required>
+                            {{-- <input type="text" class="form-control mb-3" name="description" required> --}}
+                            <textarea id="description" class="form-control" name="konten" rows="10" cols="50"></textarea>
                             <label class="form-label mb-3">Deadline</label>
-                            <input type="text" name="" id="input-datepicker" class="datepicker-here">
                             <div id="input-datepicker" class="datepicker-here"></div>
                             <input id="input-datepicker" type="datetime" class="form-control mb-3" name="deadline" required>
                             <label class="form-label mb-3">Value</label>
@@ -51,6 +51,14 @@
         </div>
     </main>
 
+    <script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
+<script>
+   var description = document.getElementById("description");
+     CKEDITOR.replace(description,{
+     language:'en-gb'
+   });
+   CKEDITOR.config.allowedContent = true;
+</script>
 @endsection
 @push('additional-js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/air-datepicker/2.2.3/js/datepicker.min.js" integrity="sha512-sM9DpZQXHGs+rFjJYXE1OcuCviEgaXoQIvgsH7nejZB64A09lKeTU4nrs/K6YxFs6f+9FF2awNeJTkaLuplBhg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
