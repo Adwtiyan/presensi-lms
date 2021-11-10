@@ -77,9 +77,9 @@ Route::prefix('students')
         Route::post('/absent', [StudentDashboardController::class, 'store'])->name('students.absent');
         Route::get('/absent/{message}', [StudentDashboardController::class, 'message_absent'])->name('students.message-absent');
     });
-Route::post('comments', '\Laravelista\Comments\CommentController@store')->name('comments.store');
-Route::delete('comments/{comment}', '\Laravelista\Comments\CommentController@destroy')->name('comments.destroy');
-Route::put('comments/{comment}', '\Laravelista\Comments\CommentController@update')->name('comments.update');
-Route::post('comments/{comment}', '\Laravelista\Comments\CommentController@reply')->name('comments.reply');
+// Route::post('comments', '\Laravelista\Comments\CommentController@store')->name('comments.store');
+// Route::delete('comments/{comment}', '\Laravelista\Comments\CommentController@destroy')->name('comments.destroy');
+// Route::put('comments/{comment}', '\Laravelista\Comments\CommentController@update')->name('comments.update');
+// Route::post('comments/{comment}', '\Laravelista\Comments\CommentController@reply')->name('comments.reply');
 
 require __DIR__ . '/auth.php';

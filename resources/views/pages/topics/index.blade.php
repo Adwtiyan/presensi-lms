@@ -35,7 +35,7 @@
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="submit" value="Delete"
                                     class="btn btn-danger waves-effect waves-light">
-                                <a href="#" class="btn btn-success">Detail</a>
+                                <a href="{{ route('topics.show', [$topic->id]) }}" class="btn btn-success">Detail</a>
                             </form>
                         </td>
                     </tr>

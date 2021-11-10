@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classrooms;
 use App\Models\Course;
 use App\Models\Topic;
+use DateTime;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -52,7 +53,7 @@ class TopicController extends Controller
         $topic->classroom_id = $request->classroom_id;
         $topic->title = $request->title;
         $topic->description = $request->description;
-        $topic->deadline = $request->deadline;
+        $topic->deadline = new DateTime($request->deadline);
         $topic->total_point = $request->total_point;
         $topic->save();
         return redirect()->route('topics.index');
@@ -66,7 +67,10 @@ class TopicController extends Controller
      */
     public function show(Topic $topic)
     {
-        //
+        $topic = Topic::firstWhere('id', $topic->id);
+        return view('pages.topics.detail')->with([
+            'topic' => $topic
+        ]);
     }
 
     /**
@@ -106,7 +110,7 @@ class TopicController extends Controller
            'course_id' => $request->course_id,
            'classroom_id' => $request->classroom_id,
            'title' => $request->title,
-           'deadline' => $request->deadline,
+           'deadline' => new DateTime($request->deadline),
            'description' => $request->description,
            'total_point' => $request->total_point
        ]);

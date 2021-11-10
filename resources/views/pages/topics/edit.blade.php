@@ -32,9 +32,9 @@
                             <label class="form-label">Title</label>
                             <input required type="text" class="form-control mb-3" name="title" value="{{ $topic->title }}">
                             <label class="form-label">Description</label>
-                            <textarea id="description" class="form-control" name="description" rows="10" cols="50"></textarea>
+                            <textarea id="description" class="form-control" name="description" rows="10" cols="50">{{ $topic->description }}</textarea>
                             <label class="form-label mb-3">Deadline</label>
-                            <input required type="datetime" class="form-control mb-3" name="deadline" value="{{ $topic->deadline }}">
+                            <input required type="datetime" id="input-datepicker" class="form-control mb-3" name="deadline" value="{{ $topic->deadline }}">
                             <label class="form-label mb-3">Value</label>
                             <input required type="number" class="form-control mb-3" name="total_point" value="{{ $topic->total_point }}">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-2">
@@ -59,3 +59,11 @@
    CKEDITOR.config.allowedContent = true;
 </script>
 @endsection
+@push('additional-js')
+    <script>
+        new DatePicker('#input-datepicker', {
+            locale: DatePickerlocaleEn,
+            timepicker: true,
+        })
+    </script>
+@endpush
