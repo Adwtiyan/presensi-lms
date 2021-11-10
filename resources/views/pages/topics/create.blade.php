@@ -30,8 +30,7 @@
                             <label class="form-label">Title</label>
                             <input type="text" class="form-control mb-3" placeholder="Tugas - 5 xxx" name="title" required>
                             <label class="form-label">Description</label>
-                            {{-- <input type="text" class="form-control mb-3" name="description" required> --}}
-                            <textarea id="description" class="form-control" name="konten" rows="10" cols="50"></textarea>
+                            <textarea id="description" class="form-control" name="description" rows="10" cols="50" required></textarea>
                             <label class="form-label mb-3">Deadline</label>
                             <input id="input-datepicker" type="datetime" class="form-control mb-3" name="deadline" required>
                             <label class="form-label mb-3">Value</label>

@@ -11,10 +11,11 @@
                             @method('put')
                             {{-- <input type="hidden" name="_method" value="GET"> --}}
                             <h3 class="text-center">Form Edit Topic</h3>
+                            <label class="form-label">ID</label>
+                            <input required type="text" class="form-control mb-3" name="title" value="{{ $topic->id }}" disabled>
                             <label for="example-text-input" class="col-sm-3 col-form-label">Course</label>
                                     <div class="col-sm-12">
                                         <select class="form-select" aria-label="Default select example" name="course_id" value="{{ $topic->course_id }}">
-                                            {{-- <option value="" selected>Select Courses</option> --}}
                                             @foreach ($courses as $course)
                                             <option value="{{ $course->id }}">{{ $course->course_title }}</option>
                                             @endforeach
@@ -23,7 +24,6 @@
                             <label for="example-text-input" class="col-sm-3 col-form-label">Classroom</label>
                                     <div class="col-sm-12">
                                         <select class="form-select" aria-label="Default select example" name="classroom_id" value="{{ $topic->classroom_id }}">
-                                            {{-- <option value="" selected>Select Classroom</option> --}}
                                             @foreach ($classrooms as $classroom)
                                             <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
                                             @endforeach
@@ -32,7 +32,7 @@
                             <label class="form-label">Title</label>
                             <input required type="text" class="form-control mb-3" name="title" value="{{ $topic->title }}">
                             <label class="form-label">Description</label>
-                            <input required type="text" class="form-control mb-3" name="description" value="{{ $topic->description }}">
+                            <textarea id="description" class="form-control" name="description" rows="10" cols="50"></textarea>
                             <label class="form-label mb-3">Deadline</label>
                             <input required type="datetime" class="form-control mb-3" name="deadline" value="{{ $topic->deadline }}">
                             <label class="form-label mb-3">Value</label>
@@ -50,4 +50,12 @@
             </div>
         </div>
     </main>
+    <script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
+<script>
+   var description = document.getElementById("description");
+     CKEDITOR.replace(description,{
+     language:'en-gb'
+   });
+   CKEDITOR.config.allowedContent = true;
+</script>
 @endsection

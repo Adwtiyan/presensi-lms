@@ -21,7 +21,6 @@ class TopicController extends Controller
             'topics' => $topics
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -47,6 +46,7 @@ class TopicController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $topic = new Topic;
         $topic->course_id = $request->course_id;
         $topic->classroom_id = $request->classroom_id;

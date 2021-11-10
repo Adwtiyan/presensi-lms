@@ -13,6 +13,7 @@
                     <th scope="col">Title</th>
                     <th scope="col">Deadline</th>
                     <th scope="col">Total Point</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
