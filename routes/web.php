@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Events\PushAbsent;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\MemoController;
@@ -31,7 +31,11 @@ Route::get('/', function () {
 
 # Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
-Route::get('/dashboard/cusdis', [DashboardController::class, 'cusdis'])->middleware(['auth'])->name('dashboard  .cusdis');
+Route::get('/dashboard/cusdis', [DashboardController::class, 'cusdis'])->middleware(['auth'])->name('dashboard.cusdis');
+Route::get('/dashboard/pusher', [DashboardController::class, 'test_pusher'])->middleware(['auth'])->name('dashboard.pusher');
+Route::get('/pusher/created', function () {
+    PushAbsent::dispatch('Hello, Malika!'); // TEST PUSHER CREATED
+});
 
 # User Setting
 Route::get('/profile', [UserController::class, 'show'])->middleware(['auth'])->name('profile.show');
