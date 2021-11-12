@@ -24,7 +24,7 @@
 
                             <hr class="my-4">
 
-                            <div class="row mb-4">
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="text-muted">Title</div>
                                     <strong>
@@ -42,6 +42,7 @@
                                     <strong>{{ $topic->total_point }}</strong>
                                 </div>
                             </div>
+                            <hr class="my-3">
                             <div class="text-center">
                                 <a href="{{ route('topics.index') }}" class="btn btn-primary">
                                     Back to Topic
@@ -51,35 +52,5 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="col-md-6 mx-auto">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" value="{{ $topic->id }}" readonly>
-                    <label for="floatingInput">ID</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" value="{{  $topic->courses->course_title }}" readonly>
-                    <label for="floatingPassword">Course ID</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" value="{{ $topic->classrooms->name }}" readonly>
-                    <label for="floatingPassword">Classroom ID</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" value="{{ $topic->title }}" readonly>
-                    <label for="floatingPassword">Title</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <div>{!! $topic->description !!}</div>
-                    <label for="floatingPassword">Description</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" value="{{ $topic->deadline }}" readonly>
-                    <label for="floatingPassword">Deadline</label>
-                  </div>
-                  <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" value="{{ $topic->total_point }}" readonly>
-                    <label for="floatingPassword">Total Point</label>
-                  </div>
-            </div> --}}
     </main>
 @endsection
