@@ -67,7 +67,7 @@ class TopicController extends Controller
      */
     public function show(Topic $topic)
     {
-        $topic = Topic::firstWhere('id', $topic->id);
+        $topic = Topic::with('courses', 'classrooms')->firstWhere('id', $topic->id);
         return view('pages.topics.detail')->with([
             'topic' => $topic
         ]);
